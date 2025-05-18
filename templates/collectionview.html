@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='collectionview_globals.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='collectionview_styleguide.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='collectionview_style.css') }}" />
+  </head>
+  <body>
+    <div class="home-page-collection">
+      <div class="sidebar">
+        <div class="list">
+          <div class="menu-item">
+            <div class="logo-placeholder"></div>
+            <a class="text-wrapper" href="{{ url_for('library') }}">Library</a>
+          </div>
+          <div class="menu-item">
+            <div class="logo-placeholder"></div>
+            <a class="text-wrapper" href="{{ url_for('add_items') }}">Add Items</a>
+          </div>
+          <div class="menu-item">
+            <div class="logo-placeholder"></div>
+            <a class="text-wrapper" href="{{ url_for('add_collection') }}">Add Collection</a>
+          </div>
+        </div>
+        <div class="div"></div>
+        <div class="title">Shelf Sync</div>
+        <div class="support">
+          <div class="logo-placeholder"></div>
+          <a class="text-wrapper" href="{{ url_for('support') }}">Support</a>
+        </div>
+        <div class="logout">
+          <div class="logo-placeholder"></div>
+          <a class="text-wrapper" href="{{ url_for('logout') }}">Logout</a>
+        </div>
+      </div>
+      
+      <div class="collection-content">
+        <div class="collection-header">
+          <h1>{{ collection.name }}</h1>
+          <a href="{{ url_for('add_items') }}" class="add-button">Add Books</a>
+        </div>
+        
+        {% if books %}
+        <div class="books-grid">
+          {% for book in books %}
+          <div class="book-card">
+            <div class="book-image"></div>
+            <div class="book-details">
+              <h3>{{ book.title }}</h3>
+              <p>{{ book.author }}</p>
+              <p>{{ book.year_published }}</p>
+              <p>{{ book.genre }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% else %}
+        <div class="no-books">
+          <p>No books in this collection yet.</p>
+          <a href="{{ url_for('add_items') }}" class="add-button">Add Books</a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>

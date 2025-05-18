@@ -1,0 +1,193 @@
+.sign-up-final {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .sign-up-final .div {
+    background-color: #ffffff;
+    width: 1427px;
+    height: 960px;
+    position: relative;
+  }
+  
+  .sign-up-final .content {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    align-items: center;
+    gap: 24px;
+    position: absolute;
+    top: 262px;
+    left: 513px;
+  }
+  
+  .sign-up-final .copy {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .sign-up-final .text-wrapper {
+    position: relative;
+    width: fit-content;
+    margin-top: -1.00px;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #000000;
+    font-size: 24px;
+    text-align: center;
+    letter-spacing: -0.24px;
+    line-height: 36px;
+    white-space: nowrap;
+  }
+  
+  .sign-up-final .p {
+    position: relative;
+    width: fit-content;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+  }
+  
+  .sign-up-final .input-and-button {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .sign-up-final .field {
+    width: 400px;
+    height: 40px;
+    padding: 8px 16px;
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 1px solid;
+    border-color: #dfdfdf;
+    flex: 1;
+    margin-top: -4.00px;
+    margin-bottom: -2.00px;
+    font-family: var(--body-text-font-family);
+    font-weight: var(--body-text-font-weight);
+    color: #828282;
+    font-size: var(--body-text-font-size);
+    letter-spacing: var(--body-text-letter-spacing);
+    line-height: var(--body-text-line-height);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    font-style: var(--body-text-font-style);
+  }
+  
+  .sign-up-final .label-wrapper {
+    display: flex;
+    width: 400px;
+    height: 40px;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 16px;
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 1px solid;
+    border-color: #dfdfdf;
+  }
+  
+  .sign-up-final .label {
+    position: relative;
+    flex: 1;
+    margin-top: -4.00px;
+    margin-bottom: -2.00px;
+    font-family: var(--body-text-font-family);
+    font-weight: var(--body-text-font-weight);
+    color: #828282;
+    font-size: var(--body-text-font-size);
+    letter-spacing: var(--body-text-letter-spacing);
+    line-height: var(--body-text-line-height);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    font-style: var(--body-text-font-style);
+  }
+  
+  .sign-up-final .button {
+    all: unset;
+    box-sizing: border-box;
+    display: flex;
+    width: 400px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0px 16px;
+    position: relative;
+    background-color: #000000;
+    border-radius: 8px;
+  }
+  
+  .sign-up-final .text-wrapper-2 {
+    position: relative;
+    width: fit-content;
+    font-family: var(--small-text-font-family);
+    font-weight: var(--small-text-font-weight);
+    color: #ffffff;
+    font-size: var(--small-text-font-size);
+    letter-spacing: var(--small-text-letter-spacing);
+    line-height: var(--small-text-line-height);
+    white-space: nowrap;
+    font-style: var(--small-text-font-style);
+  }
+  
+  .sign-up-final .by-clicking-continue {
+    position: relative;
+    align-self: stretch;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: transparent;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 24px;
+  }
+  
+  .sign-up-final .span {
+    color: #828282;
+  }
+  
+  .sign-up-final .text-wrapper-3 {
+    color: #000000;
+  }
+  
+  .sign-up-final .text-wrapper-4 {
+    position: absolute;
+    height: 48px;
+    top: 111px;
+    left: 632px;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #000000;
+    font-size: 32px;
+    text-align: center;
+    letter-spacing: -0.32px;
+    line-height: 48px;
+    white-space: nowrap;
+  }
+  

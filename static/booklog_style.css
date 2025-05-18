@@ -1,0 +1,693 @@
+.user-book-log-admin {
+    display: flex;
+    height: 960px;
+    align-items: flex-start;
+    position: relative;
+    background-color: #ffffff;
+    width: 100%;
+    min-width: 1440px;
+  }
+  
+  .user-book-log-admin .sidebar {
+    position: relative;
+    width: 256px;
+    height: 960px;
+    background-color: #ffffff;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-color: #dfdfdf;
+  }
+  
+  .user-book-log-admin .list {
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+    align-items: flex-start;
+    gap: 4px;
+    position: absolute;
+    top: 84px;
+    left: 8px;
+  }
+  
+  .user-book-log-admin .library {
+    display: flex;
+    height: 40px;
+    align-items: center;
+    gap: 16px;
+    padding: 0px 16px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 4px #00000040;
+  }
+  
+  .user-book-log-admin .logo-placeholder {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    background-color: #d9d9d9;
+    border-radius: 12px;
+  }
+  
+  .user-book-log-admin .text-wrapper {
+    position: relative;
+    flex: 1;
+    font-family: var(--small-text-font-family);
+    font-weight: var(--small-text-font-weight);
+    color: #000000;
+    font-size: var(--small-text-font-size);
+    letter-spacing: var(--small-text-letter-spacing);
+    line-height: var(--small-text-line-height);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    font-style: var(--small-text-font-style);
+  }
+  
+  .user-book-log-admin .add-items {
+    display: flex;
+    height: 40px;
+    align-items: center;
+    gap: 16px;
+    padding: 0px 16px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow-y: scroll;
+  }
+  
+  .user-book-log-admin .add-items::-webkit-scrollbar {
+    width: 0;
+    display: none;
+  }
+  
+  .user-book-log-admin .add-collection {
+    display: flex;
+    height: 40px;
+    align-items: center;
+    gap: 16px;
+    padding: 0px 16px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 8px;
+  }
+  
+  .user-book-log-admin .div {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 30px;
+    left: 154px;
+    background-color: #d9d9d9;
+    border-radius: 12px;
+  }
+  
+  .user-book-log-admin .title {
+    position: absolute;
+    height: 36px;
+    top: 23px;
+    left: 24px;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: -0.24px;
+    line-height: 36px;
+    white-space: nowrap;
+  }
+  
+  .user-book-log-admin .support {
+    display: flex;
+    width: 240px;
+    height: 40px;
+    align-items: center;
+    gap: 16px;
+    padding: 0px 16px;
+    position: absolute;
+    top: 405px;
+    left: 8px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow-y: scroll;
+  }
+  
+  .user-book-log-admin .support::-webkit-scrollbar {
+    width: 0;
+    display: none;
+  }
+  
+  .user-book-log-admin .logout {
+    display: flex;
+    width: 240px;
+    height: 40px;
+    align-items: center;
+    gap: 16px;
+    padding: 0px 16px;
+    position: absolute;
+    top: 445px;
+    left: 8px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow-y: scroll;
+  }
+  
+  .user-book-log-admin .logout::-webkit-scrollbar {
+    width: 0;
+    display: none;
+  }
+  
+  .user-book-log-admin .card-grid-image {
+    display: flex;
+    flex-direction: column;
+    width: 1184px;
+    height: 960px;
+    align-items: flex-start;
+    gap: var(--size-space-1200);
+    padding: var(--size-space-1600);
+    position: relative;
+    background-color: var(--color-background-default-default);
+  }
+  
+  .user-book-log-admin .text-content-heading {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--size-space-200);
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .user-book-log-admin .heading {
+    position: relative;
+    align-self: stretch;
+    margin-top: -1.00px;
+    font-family: var(--heading-font-family);
+    font-weight: var(--heading-font-weight);
+    color: var(--color-text-default-default);
+    font-size: var(--heading-font-size);
+    letter-spacing: var(--heading-letter-spacing);
+    line-height: var(--heading-line-height);
+    font-style: var(--heading-font-style);
+  }
+  
+  .user-book-log-admin .subheading {
+    position: absolute;
+    width: 116px;
+    height: 24px;
+    top: 23px;
+    left: 1294px;
+    font-family: var(--subheading-font-family);
+    font-weight: var(--subheading-font-weight);
+    color: var(--color-text-default-secondary);
+    font-size: var(--subheading-font-size);
+    letter-spacing: var(--subheading-letter-spacing);
+    line-height: var(--subheading-line-height);
+    font-style: var(--subheading-font-style);
+  }
+  
+  .user-book-log-admin .group {
+    position: absolute;
+    width: 1184px;
+    height: 82px;
+    top: 142px;
+    left: 256px;
+  }
+  
+  .user-book-log-admin .frame {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 1184px;
+    height: 24px;
+  }
+  
+  .user-book-log-admin .navbar {
+    position: relative;
+    width: 1162px;
+    height: 30px;
+    left: 34px;
+  }
+  
+  .user-book-log-admin .text-wrapper-2 {
+    position: absolute;
+    width: 182px;
+    top: 1px;
+    left: 0;
+    font-family: var(--heading-font-family);
+    font-weight: var(--heading-font-weight);
+    color: #000000;
+    font-size: var(--heading-font-size);
+    text-align: center;
+    letter-spacing: var(--heading-letter-spacing);
+    line-height: var(--heading-line-height);
+    white-space: nowrap;
+    font-style: var(--heading-font-style);
+  }
+  
+  .user-book-log-admin .text-wrapper-3 {
+    width: 175px;
+    left: 254px;
+    position: absolute;
+    top: 1px;
+    font-family: var(--heading-font-family);
+    font-weight: var(--heading-font-weight);
+    color: #000000;
+    font-size: var(--heading-font-size);
+    text-align: center;
+    letter-spacing: var(--heading-letter-spacing);
+    line-height: var(--heading-line-height);
+    white-space: nowrap;
+    font-style: var(--heading-font-style);
+  }
+  
+  .user-book-log-admin .text-wrapper-4 {
+    width: 163px;
+    left: 463px;
+    position: absolute;
+    top: 1px;
+    font-family: var(--heading-font-family);
+    font-weight: var(--heading-font-weight);
+    color: #000000;
+    font-size: var(--heading-font-size);
+    text-align: center;
+    letter-spacing: var(--heading-letter-spacing);
+    line-height: var(--heading-line-height);
+    white-space: nowrap;
+    font-style: var(--heading-font-style);
+  }
+  
+  .user-book-log-admin .text-wrapper-5 {
+    position: absolute;
+    width: 156px;
+    top: 1px;
+    left: 650px;
+    font-family: var(--heading-font-family);
+    font-weight: var(--heading-font-weight);
+    color: #000000;
+    font-size: var(--heading-font-size);
+    text-align: center;
+    letter-spacing: var(--heading-letter-spacing);
+    line-height: var(--heading-line-height);
+    font-style: var(--heading-font-style);
+  }
+  
+  .user-book-log-admin .overlap-group {
+    position: absolute;
+    width: 344px;
+    height: 29px;
+    top: 0;
+    left: 806px;
+  }
+  
+  .user-book-log-admin .text-wrapper-6 {
+    position: absolute;
+    width: 155px;
+    top: 0;
+    left: 0;
+    font-family: var(--heading-font-family);
+    font-weight: var(--heading-font-weight);
+    color: #000000;
+    font-size: var(--heading-font-size);
+    text-align: center;
+    letter-spacing: var(--heading-letter-spacing);
+    line-height: var(--heading-line-height);
+    font-style: var(--heading-font-style);
+  }
+  
+  .user-book-log-admin .text-wrapper-7 {
+    position: absolute;
+    width: 209px;
+    top: 0;
+    left: 135px;
+    font-family: var(--heading-font-family);
+    font-weight: var(--heading-font-weight);
+    color: #000000;
+    font-size: var(--heading-font-size);
+    text-align: center;
+    letter-spacing: var(--heading-letter-spacing);
+    line-height: var(--heading-line-height);
+    font-style: var(--heading-font-style);
+  }
+  
+  .user-book-log-admin .navbar-wrapper {
+    top: 58px;
+    left: 0;
+    position: absolute;
+    width: 1184px;
+    height: 24px;
+  }
+  
+  .user-book-log-admin .div-2 {
+    position: relative;
+    width: 1196px;
+    height: 47px;
+  }
+  
+  .user-book-log-admin .p {
+    position: absolute;
+    width: 266px;
+    top: 0;
+    left: 0;
+    font-family: var(--subheading-font-family);
+    font-weight: var(--subheading-font-weight);
+    color: transparent;
+    font-size: var(--subheading-font-size);
+    text-align: center;
+    letter-spacing: var(--subheading-letter-spacing);
+    line-height: var(--subheading-line-height);
+    font-style: var(--subheading-font-style);
+  }
+  
+  .user-book-log-admin .span {
+    color: #000000;
+    font-family: var(--subheading-font-family);
+    font-style: var(--subheading-font-style);
+    font-weight: var(--subheading-font-weight);
+    letter-spacing: var(--subheading-letter-spacing);
+    line-height: var(--subheading-line-height);
+    font-size: var(--subheading-font-size);
+  }
+  
+  .user-book-log-admin .text-wrapper-8 {
+    color: #b1b1b1;
+    font-family: var(--subheading-font-family);
+    font-style: var(--subheading-font-style);
+    font-weight: var(--subheading-font-weight);
+    letter-spacing: var(--subheading-letter-spacing);
+    line-height: var(--subheading-line-height);
+    font-size: var(--subheading-font-size);
+  }
+  
+  .user-book-log-admin .text-wrapper-9 {
+    position: absolute;
+    width: 190px;
+    top: 0;
+    left: 277px;
+    font-family: var(--subheading-font-family);
+    font-weight: var(--subheading-font-weight);
+    color: #000000;
+    font-size: var(--subheading-font-size);
+    text-align: center;
+    letter-spacing: var(--subheading-letter-spacing);
+    line-height: var(--subheading-line-height);
+    white-space: nowrap;
+    font-style: var(--subheading-font-style);
+  }
+  
+  .user-book-log-admin .text-wrapper-10 {
+    position: absolute;
+    width: 159px;
+    top: 0;
+    left: 503px;
+    font-family: var(--subheading-font-family);
+    font-weight: var(--subheading-font-weight);
+    color: #000000;
+    font-size: var(--subheading-font-size);
+    text-align: center;
+    letter-spacing: var(--subheading-letter-spacing);
+    line-height: var(--subheading-line-height);
+    white-space: nowrap;
+    font-style: var(--subheading-font-style);
+  }
+  
+  .user-book-log-admin .text-wrapper-11 {
+    position: absolute;
+    width: 154px;
+    top: 0;
+    left: 688px;
+    font-family: var(--subheading-font-family);
+    font-weight: var(--subheading-font-weight);
+    color: #000000;
+    font-size: var(--subheading-font-size);
+    text-align: center;
+    letter-spacing: var(--subheading-letter-spacing);
+    line-height: var(--subheading-line-height);
+    font-style: var(--subheading-font-style);
+  }
+  
+  .user-book-log-admin .overlap-group-2 {
+    position: absolute;
+    width: 342px;
+    height: 24px;
+    top: 0;
+    left: 842px;
+  }
+  
+  .user-book-log-admin .text-wrapper-12 {
+    position: absolute;
+    width: 150px;
+    top: 0;
+    left: 0;
+    font-family: var(--subheading-font-family);
+    font-weight: var(--subheading-font-weight);
+    color: #ff0000;
+    font-size: var(--subheading-font-size);
+    text-align: center;
+    letter-spacing: var(--subheading-letter-spacing);
+    line-height: var(--subheading-line-height);
+    font-style: var(--subheading-font-style);
+  }
+  
+  .user-book-log-admin .text-wrapper-13 {
+    position: absolute;
+    width: 209px;
+    top: 0;
+    left: 133px;
+    font-family: var(--subheading-font-family);
+    font-weight: var(--subheading-font-weight);
+    color: #000000;
+    font-size: var(--subheading-font-size);
+    text-align: center;
+    letter-spacing: var(--subheading-letter-spacing);
+    line-height: var(--subheading-line-height);
+    font-style: var(--subheading-font-style);
+  }
+  
+  .user-book-log-admin .group-wrapper {
+    top: 568px;
+    left: 256px;
+    position: absolute;
+    width: 1184px;
+    height: 24px;
+  }
+  
+  .user-book-log-admin .text-wrapper-14 {
+    position: absolute;
+    width: 150px;
+    top: 0;
+    left: 0;
+    font-family: var(--subheading-font-family);
+    font-weight: var(--subheading-font-weight);
+    color: #000000;
+    font-size: var(--subheading-font-size);
+    text-align: center;
+    letter-spacing: var(--subheading-letter-spacing);
+    line-height: var(--subheading-line-height);
+    font-style: var(--subheading-font-style);
+  }
+  
+  .user-book-log-admin .div-wrapper {
+    top: 660px;
+    left: 256px;
+    position: absolute;
+    width: 1184px;
+    height: 24px;
+  }
+  
+  .user-book-log-admin .frame-2 {
+    top: 752px;
+    left: 256px;
+    position: absolute;
+    width: 1184px;
+    height: 24px;
+  }
+  
+  .user-book-log-admin .frame-3 {
+    top: 844px;
+    left: 256px;
+    position: absolute;
+    width: 1184px;
+    height: 24px;
+  }
+  
+  .user-book-log-admin .frame-4 {
+    top: 476px;
+    left: 256px;
+    position: absolute;
+    width: 1184px;
+    height: 24px;
+  }
+  
+  .user-book-log-admin .frame-5 {
+    position: absolute;
+    width: 1184px;
+    height: 24px;
+    top: 384px;
+    left: 256px;
+  }
+  
+  .user-book-log-admin .frame-6 {
+    top: 292px;
+    left: 256px;
+    position: absolute;
+    width: 1184px;
+    height: 24px;
+  }
+  
+  .user-book-log-admin .search {
+    position: absolute;
+    width: 401px;
+    height: 40px;
+    top: 64px;
+    left: 517px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 1px solid;
+    border-color: #dfdfdf;
+  }
+  
+  .user-book-log-admin .img {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 8px;
+    left: 12px;
+  }
+  
+  .user-book-log-admin .label {
+    position: absolute;
+    width: 341px;
+    top: 7px;
+    left: 48px;
+    font-family: var(--presets-body2-font-family);
+    font-weight: var(--presets-body2-font-weight);
+    color: #828282;
+    font-size: var(--presets-body2-font-size);
+    letter-spacing: var(--presets-body2-letter-spacing);
+    line-height: var(--presets-body2-line-height);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    font-style: var(--presets-body2-font-style);
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+  /* Original CSS code should be injected here */
+  
+  .user-book-log-admin {
+    display: flex;
+    min-height: 100vh;
+    align-items: flex-start;
+    background-color: #ffffff;
+    width: 100%;
+    min-width: 1440px;
+  }
+  
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  
+  .card-grid-image {
+    flex: 1;
+    padding: var(--size-space-1600);
+    overflow-y: auto;
+  }
+  
+  .search {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .search .img {
+    margin-right: 12px;
+  }
+  
+  .search .label {
+    flex: 1;
+  }
+  
+  .group,
+  .group-wrapper,
+  .div-wrapper,
+  .frame-2,
+  .frame-3,
+  .frame-4,
+  .frame-5,
+  .frame-6 {
+    margin-bottom: 20px;
+  }
+  
+  .navbar,
+  .div-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .text-wrapper-12,
+  .text-wrapper-14 {
+    text-align: center;
+    padding: 5px;
+    border-radius: 4px;
+  }
+  
+  .text-wrapper-12 {
+    background-color: #ffcccc;
+    color: #ff0000;
+  }
+  
+  .text-wrapper-14 {
+    background-color: #ccffcc;
+    color: #008000;
+  }
+  
+  @media (max-width: 1200px) {
+    .user-book-log-admin {
+      flex-direction: column;
+    }
+  
+    .sidebar {
+      width: 100%;
+      height: auto;
+    }
+  
+    .card-grid-image {
+      padding: var(--size-space-600);
+    }
+  
+    .navbar,
+    .div-2 {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .navbar,
+    .div-2 {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .navbar,
+    .div-2 {
+      grid-template-columns: 1fr;
+    }
+  }
+  

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='lib_globals.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='lib_styleguide.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='lib_style.css') }}" />
+  </head>
+  <body>
+    <div class="home-page-library">
+      <div class="sidebar">
+        <div class="logout">
+          <div class="logo-placeholder"></div>
+          <a href="/logout" class="text-wrapper">Logout</a>
+        </div>
+        <div class="support">
+          <div class="logo-placeholder"></div>
+          <a href="/support" class="text-wrapper">Support</a>
+        </div>
+        <div class="list">
+          <div class="library">
+            <div class="logo-placeholder"></div>
+            <a href="/library" class="text-wrapper">Library</a>
+          </div>
+          <div class="add-items">
+            <div class="logo-placeholder"></div>
+            <a href="/add_items" class="text-wrapper">Add Items</a>
+          </div>
+          <div class="add-collection">
+            <div class="logo-placeholder"></div>
+            <a href="/add_collection" class="text-wrapper">Add Collection</a>
+          </div>
+        </div>
+        <div class="div"></div>
+        <div class="title">Shelf Sync</div>
+      </div>
+      <div class="main-content">
+        <header class="header">
+          <div class="filter">
+            <img class="img" src="{{ url_for('static', filename='img/filter.svg') }}" />
+            <div class="label">Filter</div>
+          </div>
+          <div class="search">
+            <img class="img" src="{{ url_for('static', filename='img/search.svg') }}" />
+            <input class="input" placeholder="Start Searching..." type="text" />
+          </div>
+          <h1 class="page-title">Your Library</h1>
+        </header>
+        
+        {% if collections %}
+          {% for collection in collections %}
+          <div class="collection-section">
+            <h2 class="collection-title">{{ collection.name }} ({{ collection.book_count }} books)</h2>
+            <div class="books-grid">
+              {% for book in books if book.collection_name == collection.name %}
+              <div class="book-card">
+                <div class="book-image"></div>
+                <div class="book-details">
+                  <h3>{{ book.title }}</h3>
+                  <p class="author">{{ book.author }}</p>
+                  <p class="year">{{ book.year_published }}</p>
+                  <p class="genre">{{ book.genre }}</p>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endfor %}
+        {% else %}
+          <div class="empty-state">
+            <p class="text-wrapper-2">Start by adding a Collection!</p>
+            <a href="{{ url_for('add_collection') }}" class="add-collection-button">Add Collection</a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>

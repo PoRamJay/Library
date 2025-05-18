@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='booklog_globals.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='booklog_styleguide.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='booklog_style.css') }}" />
+    <title>User Book Log Admin</title>
+  </head>
+  <body>
+    <div class="user-book-log-admin">
+      <nav class="sidebar">
+        <h1 class="title">Shelf Sync</h1>
+        <ul class="list">
+          <li class="library">
+            <span class="logo-placeholder" aria-hidden="true"></span>
+            <span class="text-wrapper">Book Catalog</span>
+          </li>
+          <li class="add-items">
+            <span class="logo-placeholder" aria-hidden="true"></span>
+            <span class="text-wrapper">Add book</span>
+          </li>
+          <li class="add-collection">
+            <span class="logo-placeholder" aria-hidden="true"></span>
+            <span class="text-wrapper">Remove book</span>
+          </li>
+          <li class="add-collection">
+            <span class="logo-placeholder" aria-hidden="true"></span>
+            <span class="text-wrapper">Edit book</span>
+          </li>
+          <li class="add-collection">
+            <span class="logo-placeholder" aria-hidden="true"></span>
+            <span class="text-wrapper">Book Log</span>
+          </li>
+          <li class="add-collection">
+            <span class="logo-placeholder" aria-hidden="true"></span>
+            <span class="text-wrapper">Borrower Profiles</span>
+          </li>
+        </ul>
+        <div class="support">
+          <span class="logo-placeholder" aria-hidden="true"></span>
+          <span class="text-wrapper">Support</span>
+        </div>
+        <div class="logout">
+          <span class="logo-placeholder" aria-hidden="true"></span>
+          <span class="text-wrapper">Logout</span>
+        </div>
+      </nav>
+      <main class="card-grid-image">
+        <header>
+          <h2 class="heading">Book Log</h2>
+          <p class="subheading">Admin View</p>
+        </header>
+        <form class="search" role="search">
+          <img class="img" src="img/search.svg" alt="Search icon" />
+          <input class="label" placeholder="Start Searching..." type="search" aria-label="Search books" />
+        </form>
+        <section class="group">
+          <div class="frame">
+            <div class="navbar">
+              <div class="text-wrapper-2">Book</div>
+              <div class="text-wrapper-3">Borrower Name</div>
+              <div class="text-wrapper-4">Borrower Date</div>
+              <div class="text-wrapper-5">Returner Date</div>
+              <div class="overlap-group">
+                <div class="text-wrapper-6">Status</div>
+                <div class="text-wrapper-7">Transaction ID</div>
+              </div>
+            </div>
+          </div>
+          <div class="navbar-wrapper">
+            <div class="div-2">
+              <p class="p">
+                <span class="span">The Great Gatsby</span><br />
+                <span class="text-wrapper-8">F. Scott Fitzgerald</span>
+              </p>
+              <div class="text-wrapper-9">Peter John Holden</div>
+              <div class="text-wrapper-10">04/01/2025</div>
+              <div class="text-wrapper-11">04/15/2025</div>
+              <div class="overlap-group-2">
+                <div class="text-wrapper-12">Overdue</div>
+                <div class="text-wrapper-13">123456789012444</div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="group-wrapper">
+          <div class="div-2">
+            <p class="p">
+              <span class="span">The Catcher in the Rye</span><br />
+              <span class="text-wrapper-8">J.D. Salinger</span>
+            </p>
+            <div class="text-wrapper-9">Giovanni Freniere</div>
+            <div class="text-wrapper-10">03/01/2025</div>
+            <div class="text-wrapper-11">03/15/2025</div>
+            <div class="overlap-group-2">
+              <div class="text-wrapper-14">Returned</div>
+              <div class="text-wrapper-13">123456789012888</div>
+            </div>
+          </div>
+        </section>
+        <section class="div-wrapper">
+          <div class="div-2">
+            <p class="p">
+              <span class="span">Brave New World</span><br />
+              <span class="text-wrapper-8"> Aldous Huxley</span>
+            </p>
+            <div class="text-wrapper-9">Dean Manchester</div>
+            <div class="text-wrapper-10">02/01/2025</div>
+            <div class="text-wrapper-11">02/15/2025</div>
+            <div class="overlap-group-2">
+              <div class="text-wrapper-14">Returned</div>
+              <div class="text-wrapper-13">123456789012999</div>
+            </div>
+          </div>
+        </section>
+        <section class="frame-2">
+          <div class="div-2">
+            <p class="p">
+              <span class="span">Atomic Habits</span><br />
+              <span class="text-wrapper-8">James Clear</span>
+            </p>
+            <div class="text-wrapper-9">Sam Manchester</div>
+            <div class="text-wrapper-10">02/01/2025</div>
+            <div class="text-wrapper-11">02/15/2025</div>
+            <div class="overlap-group-2">
+              <div class="text-wrapper-14">Returned</div>
+              <div class="text-wrapper-13">123456789012000</div>
+            </div>
+          </div>
+        </section>
+        <section class="frame-3">
+          <div class="div-2">
+            <p class="p">
+              <span class="span">Sunrise on the Reaping</span><br />
+              <span class="text-wrapper-8">Suzanne Collins</span>
+            </p>
+            <div class="text-wrapper-9">Jenny Nameless</div>
+            <div class="text-wrapper-10">01/01/2025</div>
+            <div class="text-wrapper-11">01/15/2025</div>
+            <div class="overlap-group-2">
+              <div class="text-wrapper-14">Returned</div>
+              <div class="text-wrapper-13">123456789012333</div>
+            </div>
+          </div>
+        </section>
+        <section class="frame-4">
+          <div class="div-2">
+            <p class="p">
+              <span class="span">Pride and Prejudice</span><br />
+              <span class="text-wrapper-8">Jane Austen</span>
+            </p>
+            <div class="text-wrapper-9">Sebastian Freniere</div>
+            <div class="text-wrapper-10">03/01/2025</div>
+            <div class="text-wrapper-11">03/15/2025</div>
+            <div class="overlap-group-2">
+              <div class="text-wrapper-14">Returned</div>
+              <div class="text-wrapper-13">123456789012777</div>
+            </div>
+          </div>
+        </section>
+        <section class="frame-5">
+          <div class="div-2">
+            <p class="p">
+              <span class="span">1984</span><br />
+              <span class="text-wrapper-8">George Orwell</span>
+            </p>
+            <div class="text-wrapper-9">Henrietta Arturia</div>
+            <div class="text-wrapper-10">03/30/2025</div>
+            <div class="text-wrapper-11">04/14/2025</div>
+            <div class="overlap-group-2">
+              <div class="text-wrapper-14">Returned</div>
+              <div class="text-wrapper-13">1234567890120111</div>
+            </div>
+          </div>
+        </section>
+        <section class="frame-6">
+          <div class="div-2">
+            <p class="p">
+              <span class="span">To Kill a Mocking Bird</span><br />
+              <span class="text-wrapper-8">Harper Lee</span>
+            </p>
+            <div class="text-wrapper-9">Peter John Holden</div>
+            <div class="text-wrapper-10">03/30/2025</div>
+            <div class="text-wrapper-11">04/14/2025</div>
+            <div class="overlap-group-2">
+              <div class="text-wrapper-14">Returned</div>
+              <div class="text-wrapper-13">123456789012222</div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

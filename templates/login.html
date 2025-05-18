@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='login_globals.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='login_styleguide.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='login_style.css') }}" />
+  </head>
+  <body>
+    <div class="login-user">
+      <div class="div">
+        <div class="content">
+          <form class="input-and-button" method="POST" action="{{ url_for('login') }}">
+            <input class="field" name="username" placeholder="username" type="text" required />
+            <input class="field" name="password" placeholder="password" type="password" required />
+            <button class="button" type="submit"><div class="text-wrapper">Log In</div></button>
+          </form>
+          <div style="width: 100%; display: flex; align-items: center; margin-top: 8px;">
+            <div class="keep-logged-in" style="margin-left: 0;">
+              <input type="checkbox" id="keep-logged-in" name="keep_logged_in" />
+              <label for="keep-logged-in">Keep Logged In</label>
+            </div>
+          </div>
+          <p class="don-t-have-account">
+            <span class="span">Don't have account yet? </span>
+            <a class="text-wrapper-3" href="{{ url_for('signup') }}">Sign Up</a>
+          </p>
+        </div>
+        <div class="copy"><div class="text-wrapper-5">Welcome back!</div></div>
+        <div class="text-wrapper-6">Shelf Sync</div>
+      </div>
+    </div>
+  </body>
+</html>

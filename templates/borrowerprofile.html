@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='borrowerprofile_globals.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='borrowerprofile_styleguide.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='borrowerprofile_style.css') }}" />
+    <title>Borrower Profiles</title>
+  </head>
+  <body>
+    <div class="borrower-profiles">
+      <nav class="sidebar">
+        <h1 class="title">Shelf Sync</h1>
+        <ul class="list">
+          <li class="library">
+            <span class="logo-placeholder" aria-hidden="true"></span>
+            <a href="#" class="text-wrapper">Book Catalog</a>
+          </li>
+          <li class="add-items">
+            <span class="logo-placeholder" aria-hidden="true"></span>
+            <a href="#" class="text-wrapper">Add book</a>
+          </li>
+          <li class="add-collection">
+            <span class="logo-placeholder" aria-hidden="true"></span>
+            <a href="#" class="text-wrapper">Remove book</a>
+          </li>
+          <li class="add-collection">
+            <span class="logo-placeholder" aria-hidden="true"></span>
+            <a href="#" class="text-wrapper">Edit book</a>
+          </li>
+          <li class="add-collection">
+            <span class="logo-placeholder" aria-hidden="true"></span>
+            <a href="#" class="text-wrapper">Book Log</a>
+          </li>
+          <li class="add-collection">
+            <span class="logo-placeholder" aria-hidden="true"></span>
+            <a href="#" class="text-wrapper">Borrower Profiles</a>
+          </li>
+        </ul>
+        <div class="support">
+          <span class="logo-placeholder" aria-hidden="true"></span>
+          <a href="#" class="text-wrapper">Support</a>
+        </div>
+        <div class="logout">
+          <span class="logo-placeholder" aria-hidden="true"></span>
+          <a href="#" class="text-wrapper">Logout</a>
+        </div>
+      </nav>
+      <main class="card-grid-image">
+        <header class="text-content-heading">
+          <h2 class="heading">Borrower Profiles</h2>
+        </header>
+        <form class="search" role="search">
+          <label for="search-input" class="visually-hidden">Search</label>
+          <input id="search-input" class="label" placeholder="Start Searching..." type="search" />
+          <img class="img" src="img/search.svg" alt="Search icon" />
+        </form>
+        <section class="frame">
+          <div class="group">
+            <header class="group-2">
+              <h3 class="text-wrapper-2">Borrower Name</h3>
+              <h3 class="text-wrapper-3">User ID</h3>
+              <h3 class="text-wrapper-4">Email</h3>
+              <h3 class="text-wrapper-5">Role ID</h3>
+              <h3 class="text-wrapper-6">Remove Profile</h3>
+            </header>
+            <ul class="group-3">
+              <li class="overlap-group">
+                <div class="frame-wrapper">
+                  <div class="group-wrapper">
+                    <div class="group-4">
+                      <span class="text-wrapper-7">Peter John Holden</span>
+                      <span class="text-wrapper-8">55123</span>
+                      <span class="text-wrapper-9">pjh2012@yahoo.com</span>
+                      <span class="text-wrapper-10">123</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="group-5" aria-label="Remove Peter John Holden"></button>
+              </li>
+              <li class="overlap">
+                <div class="div-wrapper">
+                  <div class="group-wrapper">
+                    <div class="group-4">
+                      <span class="text-wrapper-7">Henrietta Arturia</span>
+                      <span class="text-wrapper-8">55124</span>
+                      <span class="text-wrapper-9">henriettaarturia@gmail.com</span>
+                      <span class="text-wrapper-10">123</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="group-5" aria-label="Remove Henrietta Arturia"></button>
+              </li>
+              <li class="overlap-2">
+                <div class="group-6">
+                  <div class="group-wrapper">
+                    <div class="group-4">
+                      <span class="text-wrapper-7">Sebastian Freniere</span>
+                      <span class="text-wrapper-11">55125</span>
+                      <span class="text-wrapper-9">ianfreniere@gmail.com</span>
+                      <span class="text-wrapper-10">123</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="group-5" aria-label="Remove Sebastian Freniere"></button>
+              </li>
+            </ul>
+            <ul class="group-7">
+              <li class="overlap-group">
+                <div class="frame-wrapper">
+                  <div class="group-wrapper">
+                    <div class="group-4">
+                      <span class="text-wrapper-7">Giovanni Freniere</span>
+                      <span class="text-wrapper-8">55555</span>
+                      <span class="text-wrapper-9">vanfreniere@gmail.com</span>
+                      <span class="text-wrapper-10">123</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="group-5" aria-label="Remove Giovanni Freniere"></button>
+              </li>
+              <li class="overlap">
+                <div class="div-wrapper">
+                  <div class="group-wrapper">
+                    <div class="group-4">
+                      <span class="text-wrapper-7">Dean Manchester</span>
+                      <span class="text-wrapper-8">88888</span>
+                      <span class="text-wrapper-9">deanman@outlook.com</span>
+                      <span class="text-wrapper-10">123</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="group-5" aria-label="Remove Dean Manchester"></button>
+              </li>
+              <li class="overlap-2">
+                <div class="group-6">
+                  <div class="group-wrapper">
+                    <div class="group-4">
+                      <span class="text-wrapper-7">Wycliffe Arturia</span>
+                      <span class="text-wrapper-8">12345</span>
+                      <span class="text-wrapper-9">wycliffearturia@live.com</span>
+                      <span class="text-wrapper-10">123</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="group-5" aria-label="Remove Wycliffe Arturia"></button>
+              </li>
+            </ul>
+            <ul class="group-8">
+              <li class="overlap-group">
+                <div class="frame-wrapper">
+                  <div class="group-wrapper">
+                    <div class="group-4">
+                      <span class="text-wrapper-7">Jenny Nameless</span>
+                      <span class="text-wrapper-8">30922</span>
+                      <span class="text-wrapper-9">jnameless022@outlook.com</span>
+                      <span class="text-wrapper-10">123</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="group-5" aria-label="Remove Jenny Nameless"></button>
+              </li>
+              <li class="overlap">
+                <div class="div-wrapper">
+                  <div class="group-wrapper">
+                    <div class="group-4">
+                      <span class="text-wrapper-7">Jae Ehan</span>
+                      <span class="text-wrapper-8">54321</span>
+                      <span class="text-wrapper-9">jaelovesfeet@gmail.com</span>
+                      <span class="text-wrapper-10">123</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="group-5" aria-label="Remove Jae Ehan"></button>
+              </li>
+              <li class="overlap-2">
+                <div class="group-6">
+                  <div class="group-wrapper">
+                    <div class="group-4">
+                      <span class="text-wrapper-7">Maximo Gun</span>
+                      <span class="text-wrapper-8">84756</span>
+                      <span class="text-wrapper-9">maximogun70@yahoo.com</span>
+                      <span class="text-wrapper-10">123</span>
+                    </div>
+                  </div>
+                </div>
+                <button class="group-5" aria-label="Remove Maximo Gun"></button>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </main>
+      <div class="subheading">Admin View</div>
+    </div>
+  </body>
+</html>

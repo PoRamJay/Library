@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='collection_globals.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='collection_styleguide.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='collection_style.css') }}" />
+  </head>
+  <body>
+    <div class="home-page-add">
+      <div class="sidebar">
+        <div class="list">
+          <div class="menu-item">
+            <div class="logo-placeholder"></div>
+            <a class="text-wrapper" href="{{ url_for('personal_collection') }}">Library</a>
+          </div>
+          <div class="menu-item">
+            <div class="logo-placeholder"></div>
+            <a class="text-wrapper" href="{{ url_for('add_items') }}">Add Items</a>
+          </div>
+          <div class="menu-item">
+            <div class="logo-placeholder"></div>
+            <a class="text-wrapper" href="{{ url_for('add_collection') }}">Add Collection</a>
+          </div>
+        </div>
+        <div class="logo-placeholder-2"></div>
+        <div class="title">Shelf Sync</div>
+        <div class="menu-item-2">
+          <div class="logo-placeholder"></div>
+          <a class="text-wrapper" href="{{ url_for('support') }}">Support</a>
+        </div>
+        <div class="menu-item-3">
+          <div class="logo-placeholder"></div>
+          <a class="text-wrapper" href="{{ url_for('logout') }}">Logout</a>
+        </div>
+      </div>
+      <header class="header">
+        <div class="filter">
+          <img class="img" src="{{ url_for('static', filename='img/filter.svg') }}" />
+          <div class="label">Filter</div>
+        </div>
+        <div class="search">
+          <img class="img" src="{{ url_for('static', filename='img/search.svg') }}" /> <input class="input" placeholder="Start Searching..." type="text" />
+        </div>
+        <div class="text-wrapper-2">Add Collection</div>
+      </header>
+      <div class="text-wrapper-3">Collection Title</div>
+      <form method="POST" action="{{ url_for('add_collection') }}">
+        <div class="input-field">
+          <p class="p">Limit 40 characters. e.g. (My Books, Reading List, My Shelf, etc.)</p>
+          <input type="text" name="collection_name" placeholder="Collection Name" maxlength="40" required>
+        </div>
+        <button type="submit">Add Collection</button>
+      </form>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+    </div>
+  </body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="addsearch_globals.css" />
+    <link rel="stylesheet" href="addsearch_styleguide.css" />
+    <link rel="stylesheet" href="addsearch_style.css" />
+    <title>Shelf Sync - Add Items</title>
+  </head>
+  <body>
+    <div class="home-page-add-items">
+      <nav class="sidebar">
+        <h1 class="title">Shelf Sync</h1>
+        <div class="logo-placeholder-2" aria-hidden="true"></div>
+        <ul class="list">
+          <li class="menu-item">
+            <div class="logo-placeholder" aria-hidden="true"></div>
+            <a href="{{ url_for('library') }}" class="text-wrapper">Library</a>
+          </li>
+          <li class="menu-item">
+            <div class="logo-placeholder" aria-hidden="true"></div>
+            <a href="{{ url_for('add_items') }}" class="text-wrapper">Add Items</a>
+          </li>
+          <li class="menu-item">
+            <div class="logo-placeholder" aria-hidden="true"></div>
+            <a href="{{ url_for('add_collection') }}" class="text-wrapper">Add Collection</a>
+          </li>
+        </ul>
+        <div class="menu-item-2">
+          <div class="logo-placeholder" aria-hidden="true"></div>
+          <a href="{{ url_for('support') }}" class="text-wrapper">Support</a>
+        </div>
+        <div class="menu-item-3">
+          <div class="logo-placeholder" aria-hidden="true"></div>
+          <a href="{{ url_for('logout') }}" class="text-wrapper">Logout</a>
+        </div>
+      </nav>
+      <main>
+        <header class="header">
+          <h2 class="text-wrapper-2">Add Item</h2>
+          <form class="search" role="search">
+            <label for="search-input" class="visually-hidden">Search</label>
+            <img class="img" src="img/search.svg" alt="" aria-hidden="true" />
+            <input id="search-input" class="input" placeholder="Start Searching..." type="text" />
+          </form>
+          <button class="filter" type="button">
+            <img class="img" src="img/filter.svg" alt="" aria-hidden="true" />
+            <span class="label">Filter</span>
+          </button>
+          <hr class="line" />
+        </header>
+        <section>
+          <h3 class="text-wrapper-3">Select Collection</h3>
+          <div class="input-field">
+            <p class="p">Choose the collection you're adding items to.</p>
+            <div class="div-wrapper">
+              <select class="text-wrapper-4" aria-label="Select collection">
+                <option>Value</option>
+              </select>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h3 class="text-wrapper-5">Search for Books</h3>
+          <div class="select-field">
+            <p class="p">Search by ISBN or keyword. ISBN search will auto-add an item.</p>
+            <div class="select">
+              <input
+                type="text"
+                class="text-wrapper-4"
+                placeholder="Enter ISBN or keyword"
+                aria-label="Enter ISBN or keyword"
+              />
+              <img class="chevron-down" src="img/chevron-down.svg" alt="" aria-hidden="true" />
+            </div>
+          </div>
+          <button class="button" type="submit">
+            <span class="button-2">Search</span>
+          </button>
+        </section>
+        <section>
+          <h3 class="text-wrapper-6">Results</h3>
+          <img class="chevron-down-2" src="img/chevron-down.svg" alt="" aria-hidden="true" />
+          <hr class="line-2" />
+          <article class="panel-image-content">
+            <img class="image" src="placeholder.jpg" alt="Book cover" />
+            <div class="text-content-flow">
+              <header class="text-content-heading">
+                <h4 class="text-wrapper-7">Heading</h4>
+                <p class="text-wrapper-8">Subheading</p>
+              </header>
+              <div class="text">
+                <p class="text-2">
+                  Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page
+                  might look:
+                </p>
+              </div>
+              <div class="text">
+                <p class="text-2">
+                  Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite
+                  perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing,
+                  essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute
+                  quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter
+                  destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect
+                  consectetur.
+                </p>
+              </div>
+            </div>
+          </article>
+          <article class="panel-image-content-2">
+            <img class="image" src="placeholder.jpg" alt="Book cover" />
+            <div class="text-content-flow">
+              <header class="text-content-heading">
+                <h4 class="text-wrapper-9">Heading</h4>
+                <p class="text-wrapper-10">Subheading</p>
+              </header>
+              <div class="text">
+                <p class="text-3">
+                  Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page
+                  might look:
+                </p>
+              </div>
+              <div class="text">
+                <p class="text-3">
+                  Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite
+                  perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing,
+                  essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute
+                  quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter
+                  destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect
+                  consectetur.
+                </p>
+              </div>
+            </div>
+          </article>
+          <article class="panel-image-content-3">
+            <img class="image" src="placeholder.jpg" alt="Book cover" />
+            <div class="text-content-flow">
+              <header class="text-content-heading">
+                <h4 class="text-wrapper-9">Heading</h4>
+                <p class="text-wrapper-10">Subheading</p>
+              </header>
+              <div class="text">
+                <p class="text-3">
+                  Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page
+                  might look:
+                </p>
+              </div>
+              <div class="text">
+                <p class="text-3">
+                  Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite
+                  perfect nostrud nisi intricate Content. Qui international first-class nulla ut. Punctual adipisicing,
+                  essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian impeccable aute
+                  quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip, et Porter
+                  destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect
+                  consectetur.
+                </p>
+              </div>
+            </div>
+          </article>
+          <button class="button-3" type="button">
+            <span class="button-2">Borrow</span>
+          </button>
+          <button class="button-4" type="button" disabled>
+            <span class="button-2">Borrowed</span>
+          </button>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

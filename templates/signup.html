@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='signup_globals.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='signup_styleguide.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='signup_style.css') }}" />
+  </head>
+  <body>
+    <div class="sign-up-final">
+      <div class="div">
+        <div class="content">
+          <div class="copy">
+            <div class="text-wrapper">Create an account</div>
+            <p class="p">Enter your username and password to sign up for this app</p>
+          </div>
+          <form class="input-and-button" method="POST" action="{{ url_for('signup') }}">
+            <input class="field" name="username" placeholder="username" type="text" required />
+            <input class="field" name="password" placeholder="password" type="password" required />
+            <input class="field" name="confirm_password" placeholder="re-enter password" type="password" required />
+            <button class="button" type="submit"><div class="text-wrapper-2">Sign Up</div></button>
+          </form>
+          <p class="by-clicking-continue">
+            <span class="span">By clicking continue, you agree to our </span>
+            <span class="text-wrapper-3">Terms of Service</span>
+            <span class="span"> and </span>
+            <span class="text-wrapper-3">Privacy Policy</span>
+          </p>
+        </div>
+        <div class="text-wrapper-4">Shelf Sync</div>
+      </div>
+    </div>
+  </body>
+</html>

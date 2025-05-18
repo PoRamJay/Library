@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='personal_globals.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='personal_styleguide.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='personal_style.css') }}" />
+  </head>
+  <body>
+    <div class="home-page-personal">
+      <div class="sidebar">
+        <div class="list">
+          <div class="menu-item">
+            <div class="logo-placeholder"></div>
+            <a class="text-wrapper" href="{{ url_for('library') }}">Library</a>
+          </div>
+          <div class="menu-item">
+            <div class="logo-placeholder"></div>
+            <a class="text-wrapper" href="{{ url_for('add_items') }}">Add Items</a>
+          </div>
+          <div class="menu-item">
+            <div class="logo-placeholder"></div>
+            <a class="text-wrapper" href="{{ url_for('add_collection') }}">Add Collection</a>
+          </div>
+        </div>
+        <div class="div"></div>
+        <div class="title">Shelf Sync</div>
+        <div class="support">
+          <div class="logo-placeholder"></div>
+          <a class="text-wrapper" href="{{ url_for('support') }}">Support</a>
+        </div>
+        <div class="logout">
+          <div class="logo-placeholder"></div>
+          <a class="text-wrapper" href="{{ url_for('logout') }}">Logout</a>
+        </div>
+      </div>
+      <div class="card-grid-image">
+        <div class="text-content-heading">
+          <div class="text-wrapper-2">{{ collection_name }}</div>
+          <div class="text-wrapper-3">Your Books</div>
+        </div>
+        {% if books %}
+        <div class="cards">
+          {% for book in books[:3] %}
+          <div class="card">
+            <div class="image"></div>
+            <div class="body">
+              <div class="text">
+                <div class="text-wrapper-2">{{ book.title }}</div>
+                <div class="text-wrapper-4">{{ book.author }}</div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% if books|length > 3 %}
+        <div class="cards-2">
+          {% for book in books[3:6] %}
+          <div class="card">
+            <div class="image"></div>
+            <div class="body">
+              <div class="text">
+                <div class="text-wrapper-2">{{ book.title }}</div>
+                <div class="text-wrapper-4">{{ book.author }}</div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% else %}
+        <div class="text-wrapper-4">No books in this collection yet. Add some books to get started!</div>
+        {% endif %}
+      </div>
+      {% if collections|length > 1 %}
+      <div class="collections-list">
+        <h3>Your Collections</h3>
+        {% for collection in collections %}
+        <a href="{{ url_for('collection_view', id=collection.id) }}" class="collection-item">
+          {{ collection.name }} ({{ collection.book_count }} books)
+        </a>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>

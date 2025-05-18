@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='addsearch_globals.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='addsearch_styleguide.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='addsearch_style.css') }}" />
+  </head>
+  <body>
+    <div class="home-page-add-items">
+      <div class="sidebar">
+        <div class="list">
+          <div class="menu-item">
+            <div class="logo-placeholder"></div>
+            <div class="text-wrapper">Library</div>
+          </div>
+          <div class="div">
+            <div class="logo-placeholder"></div>
+            <div class="text-wrapper">Add Items</div>
+          </div>
+          <div class="menu-item">
+            <div class="logo-placeholder"></div>
+            <div class="text-wrapper">Add Collection</div>
+          </div>
+        </div>
+        <div class="logo-placeholder-2"></div>
+        <div class="title">Shelf Sync</div>
+        <div class="menu-item-2">
+          <div class="logo-placeholder"></div>
+          <div class="text-wrapper">Support</div>
+        </div>
+        <div class="menu-item-3">
+          <div class="logo-placeholder"></div>
+          <div class="text-wrapper">Logout</div>
+        </div>
+      </div>
+      <header class="header">
+        <div class="filter">
+          <img class="img" src="{{ url_for('static', filename='img/filter.svg') }}" />
+          <div class="label">Filter</div>
+        </div>
+        <div class="search">
+          <img class="img" src="{{ url_for('static', filename='img/search.svg') }}" /> <input class="input" placeholder="Start Searching..." type="text" />
+        </div>
+        <div class="text-wrapper-2">Add Item</div>
+        <img class="line" src="{{ url_for('static', filename='img/line-1.svg') }}" />
+      </header>
+      <div class="text-wrapper-3">Select Collection</div>
+      <div class="input-field">
+        <p class="p">Choose the collection you&#39;re adding items to.</p>
+        <div class="div-wrapper"><div class="text-wrapper-4">Value</div></div>
+      </div>
+      <div class="text-wrapper-5">Search for Books</div>
+      <div class="select-field">
+        <p class="p">Search by ISBN or keyword. ISBN search will auto-add an item.</p>
+        <div class="select">
+          <div class="text-wrapper-4">Value</div>
+          <img class="chevron-down" src="{{ url_for('static', filename='img/chevron-down.svg') }}" />
+        </div>
+      </div>
+      <button class="button"><button class="button-2">Search</button></button>
+      <div class="text-wrapper-6">Results</div>
+      <img class="chevron-down-2" src="{{ url_for('static', filename='img/chevron-down.svg') }}" />
+      <img class="line-2" src="{{ url_for('static', filename='img/image.svg') }}" />
+      <div class="panel-image-content">
+        <div class="image"></div>
+        <div class="text-content-flow">
+          <div class="text-content-heading">
+            <div class="text-wrapper-7">Heading</div>
+            <div class="text-wrapper-8">Subheading</div>
+          </div>
+          <div class="text">
+            <p class="text-2">
+              Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page
+              might look:
+            </p>
+          </div>
+          <div class="text">
+            <p class="text-2">
+              Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite
+              perfect nostrud nisi intricate Content. Qui&nbsp;&nbsp;international first-class nulla ut. Punctual
+              adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian
+              impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip,
+              et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect
+              consectetur.
+            </p>
+          </div>
+        </div>
+      </div>
+      <button class="button-3"><button class="button-2">Borrow</button></button>
+      <div class="panel-image-content-2">
+        <div class="image"></div>
+        <div class="text-content-flow">
+          <div class="text-content-heading">
+            <div class="text-wrapper-7">Heading</div>
+            <div class="text-wrapper-8">Subheading</div>
+          </div>
+          <div class="text">
+            <p class="text-2">
+              Body text for your whole article or post. We'll put in some lorem ipsum to show how a filled-out page
+              might look:
+            </p>
+          </div>
+          <div class="text">
+            <p class="text-2">
+              Excepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation exquisite
+              perfect nostrud nisi intricate Content. Qui&nbsp;&nbsp;international first-class nulla ut. Punctual
+              adipisicing, essential lovely queen tempor eiusmod irure. Exclusive izakaya charming Scandinavian
+              impeccable aute quality of life soft power pariatur Melbourne occaecat discerning. Qui wardrobe aliquip,
+              et Porter destination Toto remarkable officia Helsinki excepteur Basset hound. Zürich sleepy perfect
+              consectetur.
+            </p>
+          </div>
+        </div>
+      </div>
+      <button class="button-4"><button class="button-2">Borrow</button></button>
+    </div>
+  </body>
+</html>

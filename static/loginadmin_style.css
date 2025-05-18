@@ -1,0 +1,198 @@
+.login-admin {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .login-admin .div {
+    background-color: #ffffff;
+    width: 1427px;
+    height: 960px;
+    position: relative;
+  }
+  
+  .login-admin .content {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    align-items: center;
+    gap: 24px;
+    position: absolute;
+    top: 404px;
+    left: 801px;
+  }
+  
+  .login-admin .input-and-button {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    position: relative;
+    flex: 0 0 auto;
+  }
+  
+  .login-admin .field {
+    width: 400px;
+    height: 40px;
+    padding: 8px 16px;
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 1px solid;
+    border-color: #e6e6e6;
+    flex: 1;
+    margin-top: -4.00px;
+    margin-bottom: -2.00px;
+    font-family: var(--body-text-font-family);
+    font-weight: var(--body-text-font-weight);
+    color: #757575;
+    font-size: var(--body-text-font-size);
+    letter-spacing: var(--body-text-letter-spacing);
+    line-height: var(--body-text-line-height);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    font-style: var(--body-text-font-style);
+  }
+  
+  .login-admin .label-wrapper {
+    display: flex;
+    width: 400px;
+    height: 40px;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 16px;
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 1px solid;
+    border-color: #e6e6e6;
+  }
+  
+  .login-admin .label {
+    position: relative;
+    flex: 1;
+    margin-top: -4.00px;
+    margin-bottom: -2.00px;
+    font-family: var(--body-text-font-family);
+    font-weight: var(--body-text-font-weight);
+    color: #757575;
+    font-size: var(--body-text-font-size);
+    letter-spacing: var(--body-text-letter-spacing);
+    line-height: var(--body-text-line-height);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    font-style: var(--body-text-font-style);
+  }
+  
+  .login-admin .button {
+    all: unset;
+    box-sizing: border-box;
+    display: flex;
+    width: 400px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0px 16px;
+    position: relative;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+  }
+  
+  .login-admin .text-wrapper {
+    position: relative;
+    width: fit-content;
+    font-family: var(--small-text-font-family);
+    font-weight: var(--small-text-font-weight);
+    color: #ffffff;
+    font-size: var(--small-text-font-size);
+    letter-spacing: var(--small-text-letter-spacing);
+    line-height: var(--small-text-line-height);
+    white-space: nowrap;
+    font-style: var(--small-text-font-style);
+  }
+  
+  .login-admin .check-box {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 176px;
+    left: 8px;
+  }
+  
+  .login-admin .text-wrapper-2 {
+    position: absolute;
+    width: 131px;
+    top: 175px;
+    left: 32px;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #1e1e1e;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 24px;
+  }
+  
+  .login-admin .text-wrapper-3 {
+    position: absolute;
+    width: 131px;
+    top: 175px;
+    left: 253px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #1e1e1e;
+    font-size: 16px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 24px;
+    text-decoration: underline;
+  }
+  
+  .login-admin .text-wrapper-4 {
+    position: absolute;
+    height: 48px;
+    top: 455px;
+    left: 266px;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #000000;
+    font-size: 32px;
+    text-align: center;
+    letter-spacing: -0.32px;
+    line-height: 48px;
+    white-space: nowrap;
+  }
+  
+  .login-admin .copy {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    position: absolute;
+    top: 303px;
+    left: 884px;
+  }
+  
+  .login-admin .text-wrapper-5 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1.00px;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #000000;
+    font-size: 24px;
+    text-align: center;
+    letter-spacing: -0.24px;
+    line-height: 36px;
+    white-space: nowrap;
+  }
+  

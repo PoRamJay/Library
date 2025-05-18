@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='support_globals.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='support_styleguide.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='support_style.css') }}" />
+  </head>
+  <body>
+    <div class="home-page-support">
+      <div class="sidebar">
+        <div class="list">
+          <div class="menu-item">
+            <div class="logo-placeholder"></div>
+            <a class="text-wrapper" href="{{ url_for('library') }}">Library</a>
+          </div>
+          <div class="menu-item">
+            <div class="logo-placeholder"></div>
+            <a class="text-wrapper" href="{{ url_for('add_items') }}">Add Items</a>
+          </div>
+          <div class="menu-item">
+            <div class="logo-placeholder"></div>
+            <a class="text-wrapper" href="{{ url_for('add_collection') }}">Add Collection</a>
+          </div>
+        </div>
+        <div class="div">
+          <div class="logo-placeholder"></div>
+          <a class="text-wrapper" href="{{ url_for('support') }}">Support</a>
+        </div>
+        <div class="logo-placeholder-2"></div>
+        <div class="title">Shelf Sync</div>
+        <div class="menu-item-2">
+          <div class="logo-placeholder"></div>
+          <a class="text-wrapper" href="{{ url_for('logout') }}">Logout</a>
+        </div>
+      </div>
+      <header class="header">
+        <p class="p">How can we help you?</p>
+        <img class="line" src="{{ url_for('static', filename='img/line-1.svg') }}" />
+      </header>
+      <div class="group">
+        <div class="text-wrapper-2">Account Management</div>
+        <div class="text-wrapper-3">FAQs</div>
+        <div class="input-field"><p class="label">Registration, login, password reset, profile updates.</p></div>
+      </div>
+      <div class="group-2">
+        <div class="text-wrapper-3">Ebook Access</div>
+        <div class="input-field-2"><p class="label">Downloading, reading, returning, renewals, holds.</p></div>
+      </div>
+      <div class="group-3">
+        <div class="text-wrapper-3">Device Compatibility</div>
+        <div class="input-field-2"><p class="label">Supported devices, syncing across devices.</p></div>
+      </div>
+      <div class="group-4">
+        <div class="text-wrapper-3">Troubleshooting</div>
+        <div class="input-field-2"><p class="label">Common errors, technical issues, reporting problems.</p></div>
+      </div>
+      <div class="group-5">
+        <div class="text-wrapper-4">Collections</div>
+        <div class="input-field-3"><div class="label">Creating, managing, sharing.</div></div>
+        <div class="input-field-4">
+          <input
+            class="input"
+            placeholder="Email: support@shelfsync.com&lt;br/&gt;We aim to respond to all inquiries within 24-48 business hours."
+            type="email"
+          />
+        </div>
+      </div>
+      <div class="group-6">
+        <div class="text-wrapper-3">Library Navigation</div>
+        <div class="input-field-2">
+          <input class="label-2" placeholder="Browsing, searching, filtering, sorting." type="text" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
