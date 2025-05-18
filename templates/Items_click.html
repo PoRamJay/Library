@@ -12,32 +12,49 @@
       <div class="sidebar">
         <div class="list">
           <div class="menu-item">
-            <div class="logo-placeholder"></div>
+            <svg class="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 19.5C4 18.837 4.26339 18.2011 4.73223 17.7322C5.20107 17.2634 5.83696 17 6.5 17H20" stroke="#828282" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6.5 2H20V22H6.5C5.83696 22 5.20107 21.7366 4.73223 21.2678C4.26339 20.7989 4 20.163 4 19.5V4.5C4 3.83696 4.26339 3.20107 4.73223 2.73223C5.20107 2.26339 5.83696 2 6.5 2V2Z" stroke="#828282" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
             <a class="text-wrapper" href="{{ url_for('library') }}">Library</a>
           </div>
           <div class="menu-item">
-            <div class="logo-placeholder"></div>
+            <svg class="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 5V19M5 12H19" stroke="#828282" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
             <a class="text-wrapper" href="{{ url_for('add_items') }}">Add Items</a>
           </div>
           <div class="menu-item">
-            <div class="logo-placeholder"></div>
+            <svg class="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 5V19M5 12H19" stroke="#828282" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
             <a class="text-wrapper" href="{{ url_for('add_collection') }}">Add Collection</a>
           </div>
         </div>
         <div class="logo-placeholder-2"></div>
         <div class="title">Shelf Sync</div>
         <div class="menu-item-2">
-          <div class="logo-placeholder"></div>
+          <svg class="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#828282" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9.09 9C9.3251 8.33167 9.78915 7.76811 10.4 7.40913C11.0108 7.05016 11.7289 6.91894 12.4272 7.03871C13.1255 7.15849 13.7588 7.52152 14.2151 8.06353C14.6713 8.60553 14.9211 9.29152 14.92 10C14.92 12 11.92 13 11.92 13" stroke="#828282" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 17H12.01" stroke="#828282" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
           <a class="text-wrapper" href="{{ url_for('support') }}">Support</a>
         </div>
         <div class="menu-item-3">
-          <div class="logo-placeholder"></div>
+          <svg class="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="#828282" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 17L21 12L16 7" stroke="#828282" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21 12H9" stroke="#828282" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
           <a class="text-wrapper" href="{{ url_for('logout') }}">Logout</a>
         </div>
       </div>
       <header class="header">
         <div class="filter">
-          <img class="img" src="{{ url_for('static', filename='img/filter.svg') }}" />
+          <svg class="filter-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 4L9 12V18L15 21V12L20 4H4Z" stroke="#828282" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
           <div class="label">Filter</div>
         </div>
         <div class="search">

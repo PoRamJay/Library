@@ -124,7 +124,23 @@ def library():
 def add_items():
     if not session.get('logged_in'):
         return redirect(url_for('login'))
-    return render_template('add_items.html')
+    
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    
+    # Get user's collections
+    cursor.execute('''
+        SELECT c.* 
+        FROM collections c 
+        WHERE c.user_id = (SELECT id FROM users WHERE username = %s)
+        ORDER BY c.name
+    ''', (session['username'],))
+    collections = cursor.fetchall()
+    
+    cursor.close()
+    conn.close()
+    
+    return render_template('add_items.html', collections=collections)
 
 @app.route('/add_collection', methods=['GET', 'POST'])
 def add_collection():

@@ -3,74 +3,95 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='support_globals.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='support_styleguide.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='support_style.css') }}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='items_globals.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='items_styleguide.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='items_style.css') }}" />
   </head>
   <body>
-    <div class="home-page-support">
+    <div class="home-page-add-items">
       <div class="sidebar">
-        <div class="list">
-          <div class="menu-item">
-            <div class="logo-placeholder"></div>
-            <a class="text-wrapper" href="{{ url_for('library') }}">Library</a>
-          </div>
-          <div class="menu-item">
-            <div class="logo-placeholder"></div>
-            <a class="text-wrapper" href="{{ url_for('add_items') }}">Add Items</a>
-          </div>
-          <div class="menu-item">
-            <div class="logo-placeholder"></div>
-            <a class="text-wrapper" href="{{ url_for('add_collection') }}">Add Collection</a>
-          </div>
-        </div>
-        <div class="div">
-          <div class="logo-placeholder"></div>
-          <a class="text-wrapper" href="{{ url_for('support') }}">Support</a>
-        </div>
-        <div class="logo-placeholder-2"></div>
         <div class="title">Shelf Sync</div>
-        <div class="menu-item-2">
-          <div class="logo-placeholder"></div>
-          <a class="text-wrapper" href="{{ url_for('logout') }}">Logout</a>
+        <div class="menu-list">
+          <a href="{{ url_for('library') }}" class="menu-item {% if request.endpoint == 'library' %}active{% endif %}">
+            <svg class="menu-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 19.5C4 18.837 4.26339 18.2011 4.73223 17.7322C5.20107 17.2634 5.83696 17 6.5 17H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6.5 2H20V22H6.5C5.83696 22 5.20107 21.7366 4.73223 21.2678C4.26339 20.7989 4 20.163 4 19.5V4.5C4 3.83696 4.26339 3.20107 4.73223 2.73223C5.20107 2.26339 5.83696 2 6.5 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Library
+          </a>
+          <a href="{{ url_for('add_items') }}" class="menu-item {% if request.endpoint == 'add_items' %}active{% endif %}">
+            <svg class="menu-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Add Items
+          </a>
+          <a href="{{ url_for('add_collection') }}" class="menu-item {% if request.endpoint == 'add_collection' %}active{% endif %}">
+            <svg class="menu-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Add Collection
+          </a>
+          <a href="{{ url_for('support') }}" class="menu-item {% if request.endpoint == 'support' %}active{% endif %}">
+            <svg class="menu-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9.09 9C9.3251 8.33167 9.78915 7.76811 10.4 7.40913C11.0108 7.05016 11.7289 6.91894 12.4272 7.03871C13.1255 7.15849 13.7588 7.52152 14.2151 8.06353C14.6713 8.60553 14.9211 9.29152 14.92 10C14.92 12 11.92 13 11.92 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 17H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Support
+          </a>
+          <a href="{{ url_for('logout') }}" class="menu-item">
+            <svg class="menu-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M16 17L21 12L16 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M21 12H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Logout
+          </a>
         </div>
       </div>
-      <header class="header">
-        <p class="p">How can we help you?</p>
-        <img class="line" src="{{ url_for('static', filename='img/line-1.svg') }}" />
-      </header>
-      <div class="group">
-        <div class="text-wrapper-2">Account Management</div>
-        <div class="text-wrapper-3">FAQs</div>
-        <div class="input-field"><p class="label">Registration, login, password reset, profile updates.</p></div>
-      </div>
-      <div class="group-2">
-        <div class="text-wrapper-3">Ebook Access</div>
-        <div class="input-field-2"><p class="label">Downloading, reading, returning, renewals, holds.</p></div>
-      </div>
-      <div class="group-3">
-        <div class="text-wrapper-3">Device Compatibility</div>
-        <div class="input-field-2"><p class="label">Supported devices, syncing across devices.</p></div>
-      </div>
-      <div class="group-4">
-        <div class="text-wrapper-3">Troubleshooting</div>
-        <div class="input-field-2"><p class="label">Common errors, technical issues, reporting problems.</p></div>
-      </div>
-      <div class="group-5">
-        <div class="text-wrapper-4">Collections</div>
-        <div class="input-field-3"><div class="label">Creating, managing, sharing.</div></div>
-        <div class="input-field-4">
-          <input
-            class="input"
-            placeholder="Email: support@shelfsync.com&lt;br/&gt;We aim to respond to all inquiries within 24-48 business hours."
-            type="email"
-          />
+
+      <div class="main-content">
+        <header class="header">
+          <h1 class="header-title">How can we help you?</h1>
+        </header>
+
+        <div class="support-section">
+          <h2 class="section-title">Account Management</h2>
+          <p class="section-description">Registration, login, password reset, profile updates.</p>
         </div>
-      </div>
-      <div class="group-6">
-        <div class="text-wrapper-3">Library Navigation</div>
-        <div class="input-field-2">
-          <input class="label-2" placeholder="Browsing, searching, filtering, sorting." type="text" />
+
+        <div class="support-section">
+          <h2 class="section-title">Ebook Access</h2>
+          <p class="section-description">Downloading, reading, returning, renewals, holds.</p>
+        </div>
+
+        <div class="support-section">
+          <h2 class="section-title">Device Compatibility</h2>
+          <p class="section-description">Supported devices, syncing across devices.</p>
+        </div>
+
+        <div class="support-section">
+          <h2 class="section-title">Troubleshooting</h2>
+          <p class="section-description">Common errors, technical issues, reporting problems.</p>
+        </div>
+
+        <div class="support-section">
+          <h2 class="section-title">Collections</h2>
+          <p class="section-description">Creating, managing, sharing.</p>
+        </div>
+
+        <div class="support-section">
+          <h2 class="section-title">Library Navigation</h2>
+          <p class="section-description">Browsing, searching, filtering, sorting.</p>
+        </div>
+
+        <div class="support-section">
+          <h2 class="section-title">Contact Support</h2>
+          <p class="section-description">Email: support@shelfsync.com</p>
+          <p class="section-description">We aim to respond to all inquiries within 24-48 business hours.</p>
         </div>
       </div>
     </div>
