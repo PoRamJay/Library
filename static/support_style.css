@@ -37,10 +37,31 @@
   gap: 16px;
   padding: 0px 16px;
   position: relative;
-  align-self: stretch;
-  width: 100%;
+  width: 240px;
   background-color: #ffffff;
   border-radius: 8px;
+  cursor: pointer;
+}
+
+.home-page-support .menu-item:active {
+  background-color: #E8E8E8;
+}
+
+.home-page-support .menu-item.active {
+  background-color: #F5F5F5;
+}
+
+.home-page-support .menu-item.active .text-wrapper {
+  font-weight: 600;
+  color: #000000;
+}
+
+.home-page-support .menu-item.active svg path {
+  stroke: #000000;
+}
+
+.home-page-support .menu-item:hover {
+  background-color: #F5F5F5;
 }
 
 .home-page-support .logo-placeholder {
@@ -60,12 +81,22 @@
   font-size: var(--small-text-font-size);
   letter-spacing: var(--small-text-letter-spacing);
   line-height: var(--small-text-line-height);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  font-style: var(--small-text-font-style);
+  text-decoration: none;
+}
+
+.home-page-support .menu-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.home-page-support .menu-item:active .text-wrapper {
+  color: #000000;
+}
+
+.home-page-support .menu-item:active svg path {
+  stroke: #000000;
 }
 
 .home-page-support .div {
@@ -108,18 +139,21 @@
 }
 
 .home-page-support .menu-item-2 {
-  top: 365px;
-  overflow-y: scroll;
   display: flex;
-  width: 240px;
   height: 40px;
   align-items: center;
   gap: 16px;
   padding: 0px 16px;
   position: absolute;
+  width: 240px;
+  top: 385px;
   left: 8px;
   background-color: #ffffff;
   border-radius: 8px;
+}
+
+.home-page-support .menu-item-2:hover {
+  background-color: #F5F5F5;
 }
 
 .home-page-support .menu-item-2::-webkit-scrollbar {
@@ -339,4 +373,66 @@
   background: transparent;
   border: none;
   padding: 0;
+}
+
+.home-page-support .bottom-menu {
+  position: absolute;
+  bottom: 16px;
+  left: 8px;
+  width: calc(100% - 16px);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.home-page-support .bottom-menu .menu-item {
+  display: flex;
+  height: 40px;
+  align-items: center;
+  gap: 16px;
+  padding: 0px 16px;
+  position: relative;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.home-page-support .bottom-menu .menu-item:hover {
+  background-color: #F5F5F5;
+}
+
+.home-page-support .bottom-menu .menu-item:hover .text-wrapper {
+  color: #333333;
+}
+
+.home-page-support .bottom-menu .menu-item:hover svg path {
+  stroke: #333333;
+}
+
+.home-page-support .bottom-menu .menu-item.active {
+  background-color: #F5F5F5;
+}
+
+.home-page-support .bottom-menu .menu-item.active .text-wrapper {
+  color: #333333;
+  font-weight: 500;
+}
+
+.home-page-support .bottom-menu .menu-item.active svg path {
+  stroke: #333333;
+}
+
+.home-page-support .bottom-menu .menu-item:active {
+  background-color: #E8E8E8;
+}
+
+.home-page-support .bottom-menu .menu-item:active .text-wrapper {
+  color: #333333;
+}
+
+.home-page-support .bottom-menu .menu-item:active svg path {
+  stroke: #333333;
 }

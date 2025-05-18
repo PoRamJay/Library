@@ -148,9 +148,12 @@ def add_collection():
         return redirect(url_for('login'))
     if request.method == 'POST':
         collection_name = request.form['collection_name']
+        language = request.form.get('language', 'en')  # Get language from form
+        
         if not collection_name:
             flash('Collection name is required!')
             return render_template('add_collection.html')
+            
         # Get user_id from username in session
         conn = get_db_connection()
         cursor = conn.cursor()
@@ -161,13 +164,15 @@ def add_collection():
             cursor.close()
             conn.close()
             return render_template('add_collection.html')
+            
         user_id = user[0]
-        cursor.execute('INSERT INTO collections (name, user_id) VALUES (%s, %s)', (collection_name, user_id))
+        cursor.execute('INSERT INTO collections (name, user_id, language) VALUES (%s, %s, %s)', 
+                      (collection_name, user_id, language))
         conn.commit()
         cursor.close()
         conn.close()
         flash('Collection added successfully!')
-        return redirect(url_for('library'))  # Redirect to library instead of add_collection
+        return redirect(url_for('library'))
     return render_template('add_collection.html')
 
 @app.route('/add_items_click')

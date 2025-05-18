@@ -110,7 +110,6 @@
   position: absolute;
   top: 325px;
   left: 8px;
-  overflow-y: scroll;
   display: flex;
   height: 40px;
   align-items: center;
@@ -130,7 +129,6 @@
   position: absolute;
   top: 385px;
   left: 8px;
-  overflow-y: scroll;
   display: flex;
   height: 40px;
   align-items: center;
@@ -423,4 +421,11 @@
   line-height: var(--single-line-body-base-line-height);
   white-space: nowrap;
   font-style: var(--single-line-body-base-font-style);
+}
+
+.menu-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  flex-shrink: 0;
 }
