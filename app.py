@@ -19,7 +19,7 @@ def get_db_connection():
 def index():
     if session.get('logged_in'):
         return redirect(url_for('library'))
-    return redirect(url_for('signup'))
+    return redirect(url_for('loginadmin'))
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -66,8 +66,40 @@ def login():
             flash('Invalid username or password!')
     return render_template('login.html')
 
-@app.route('/loginadmin')
+@app.route('/loginadmin', methods=['GET', 'POST'])
 def loginadmin():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        is_user = 'user' in request.form
+        is_admin = 'admin' in request.form
+
+        if not is_user and not is_admin:
+            flash('Please select at least one role (User or Admin).')
+        elif is_admin:
+            # Demo admin login: username 'admin', password 'adminpassword'
+            if username == 'admin' and password == 'adminpassword':
+                session['logged_in'] = True
+                session['username'] = username
+                session['role'] = 'admin'
+                return redirect(url_for('home'))
+            else:
+                flash('Invalid admin credentials!')
+        elif is_user:
+            # Regular user login logic
+            conn = get_db_connection()
+            cursor = conn.cursor()
+            cursor.execute('SELECT password_hash FROM users WHERE username = %s', (username,))
+            user = cursor.fetchone()
+            cursor.close()
+            conn.close()
+            if user and check_password_hash(user[0], password):
+                session['logged_in'] = True
+                session['username'] = username
+                session['role'] = 'user'
+                return redirect(url_for('home'))
+            else:
+                flash('Invalid username or password!')
     return render_template('loginadmin.html')
 
 # Simulate login for demonstration (no real authentication)
@@ -208,7 +240,7 @@ def support():
 @app.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for('login'))
+    return redirect(url_for('loginadmin'))
 
 # --- DELETE COLLECTION ROUTE ADDED BELOW ---
 @app.route('/delete_collection/<int:collection_id>', methods=['POST'])
