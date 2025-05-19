@@ -190,100 +190,15 @@ def add_items():
     if not session.get('logged_in'):
         return redirect(url_for('login'))
 
-    search = request.args.get('search', '').strip()
-    sort = request.args.get('sort', 'az')
+    search = request.values.get('search', '').strip()
+    sort = request.values.get('sort', 'az')
     message = None
     search_results = None
+    selected_collection = None
+    collection_id = request.values.get('collection_id')
 
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
-
-    # Handle POST request for adding items
-    if request.method == 'POST':
-        collection_id = request.form.get('collection_id')
-        search_query = request.form.get('search_query', '').strip()
-        search_type = request.form.get('search_type', 'keyword')
-        book_id = request.form.get('book_id')
-
-        if collection_id:
-            if book_id:  # If a specific book was selected to add (for ISBN search or future use)
-                cursor.execute('SELECT * FROM books WHERE id = %s', (book_id,))
-                book = cursor.fetchone()
-                if book:
-                    cursor.execute('SELECT * FROM collection_books WHERE collection_id = %s AND book_id = %s',
-                                   (collection_id, book['id']))
-                    if not cursor.fetchone():
-                        cursor.execute('INSERT INTO collection_books (collection_id, book_id) VALUES (%s, %s)',
-                                       (collection_id, book['id']))
-                        conn.commit()
-                        message = f"Book '{book['title']}' added to collection!"
-                    else:
-                        message = f"Book '{book['title']}' is already in this collection."
-            elif search_query:
-                if search_type == 'isbn':
-                    cursor.execute('SELECT * FROM books WHERE isbn = %s', (search_query,))
-                    book = cursor.fetchone()
-                    if book:
-                        cursor.execute('SELECT * FROM collection_books WHERE collection_id = %s AND book_id = %s',
-                                       (collection_id, book['id']))
-                        if not cursor.fetchone():
-                            cursor.execute('INSERT INTO collection_books (collection_id, book_id) VALUES (%s, %s)',
-                                           (collection_id, book['id']))
-                            conn.commit()
-                            message = f"Book '{book['title']}' added to collection!"
-                        else:
-                            message = f"Book '{book['title']}' is already in this collection."
-                        search_results = [book]
-                    else:
-                        message = "No book found with that ISBN."
-                else:
-                    # Keyword search: find the first matching book and add it
-                    cursor.execute('''
-                        SELECT * FROM books 
-                        WHERE LOWER(title) LIKE %s 
-                        OR LOWER(author) LIKE %s 
-                        OR LOWER(genre) LIKE %s
-                        LIMIT 1
-                    ''', (f'%{search_query.lower()}%', f'%{search_query.lower()}%', f'%{search_query.lower()}%'))
-                    book = cursor.fetchone()
-                    if book:
-                        cursor.execute('SELECT * FROM collection_books WHERE collection_id = %s AND book_id = %s',
-                                       (collection_id, book['id']))
-                        if not cursor.fetchone():
-                            cursor.execute('INSERT INTO collection_books (collection_id, book_id) VALUES (%s, %s)',
-                                           (collection_id, book['id']))
-                            conn.commit()
-                            message = f"Book '{book['title']}' added to collection!"
-                        else:
-                            message = f"Book '{book['title']}' is already in this collection."
-                        search_results = [book]
-                    else:
-                        message = "No books found matching your search."
-
-    # Build the base query for books
-    query = '''
-        SELECT b.*, COUNT(cb.collection_id) as collection_count
-        FROM books b
-        LEFT JOIN collection_books cb ON b.id = cb.book_id
-        WHERE 1=1
-    '''
-    params = []
-
-    # Add search filter
-    if search:
-        query += " AND (LOWER(b.title) LIKE %s OR LOWER(b.author) LIKE %s OR b.isbn LIKE %s)"
-        params.extend([f"%{search.lower()}%", f"%{search.lower()}%", f"%{search}%"])
-
-    query += " GROUP BY b.id"
-
-    # Add sort
-    if sort == 'za':
-        query += " ORDER BY b.title DESC"
-    else:
-        query += " ORDER BY b.title ASC"
-
-    cursor.execute(query, params)
-    books = cursor.fetchall()
 
     # Get user's collections
     cursor.execute('''
@@ -294,14 +209,50 @@ def add_items():
     ''', (session['username'],))
     collections = cursor.fetchall()
 
+    # Handle add-to-collection POST
+    if request.method == 'POST' and request.form.get('add_book_id'):
+        collection_id = request.form.get('collection_id')
+        add_book_id = request.form.get('add_book_id')
+        if collection_id and add_book_id:
+            cursor.execute('SELECT * FROM books WHERE id = %s', (add_book_id,))
+            book = cursor.fetchone()
+            if book:
+                cursor.execute('SELECT * FROM collection_books WHERE collection_id = %s AND book_id = %s', (collection_id, book['id']))
+                if not cursor.fetchone():
+                    cursor.execute('INSERT INTO collection_books (collection_id, book_id) VALUES (%s, %s)', (collection_id, book['id']))
+                    conn.commit()
+                    message = f"Book '{book['title']}' added to collection!"
+                else:
+                    message = f"Book '{book['title']}' is already in this collection."
+            selected_collection = int(collection_id)
+
+    # Handle search (GET or POST)
+    if (request.method == 'POST' and request.form.get('search_query')) or (request.method == 'GET' and search):
+        search_query = request.values.get('search_query', search)
+        search_type = request.values.get('search_type', 'keyword')
+        if search_type == 'isbn':
+            cursor.execute('SELECT * FROM books WHERE isbn = %s', (search_query,))
+            book = cursor.fetchone()
+            search_results = [book] if book else []
+        else:
+            cursor.execute('''
+                SELECT * FROM books 
+                WHERE LOWER(title) LIKE %s 
+                OR LOWER(author) LIKE %s 
+                OR LOWER(genre) LIKE %s
+            ''', (f'%{search_query.lower()}%', f'%{search_query.lower()}%', f'%{search_query.lower()}%'))
+            search_results = cursor.fetchall()
+        if not search_results:
+            message = "No books found matching your search."
+
     cursor.close()
     conn.close()
 
-    return render_template('add_items.html', 
-                         collections=collections, 
-                         books=books, 
+    return render_template('add_items.html',
+                         collections=collections,
                          message=message,
-                         search_results=search_results)
+                         search_results=search_results,
+                         selected_collection=selected_collection)
 
 @app.route('/add_collection', methods=['GET', 'POST'])
 def add_collection():
@@ -451,6 +402,10 @@ def personal_collection(collection_id):
     if not session.get('logged_in'):
         return redirect(url_for('login'))
     
+    # Get search parameters
+    search_query = request.args.get('search', '').strip()
+    sort = request.args.get('sort', 'az')
+    
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
     
@@ -468,14 +423,36 @@ def personal_collection(collection_id):
         flash('Collection not found or not authorized!')
         return redirect(url_for('library'))
     
-    # Get books for this collection
-    cursor.execute('''
+    # Build the base query for books
+    query = '''
         SELECT b.* 
         FROM books b 
         JOIN collection_books cb ON b.id = cb.book_id 
         WHERE cb.collection_id = %s
-        ORDER BY b.title
-    ''', (collection_id,))
+    '''
+    params = [collection_id]
+
+    # Add search filter if search query exists
+    if search_query:
+        query += '''
+            AND (
+                LOWER(b.title) LIKE %s 
+                OR LOWER(b.author) LIKE %s 
+                OR LOWER(b.genre) LIKE %s
+                OR b.isbn LIKE %s
+            )
+        '''
+        search_pattern = f'%{search_query.lower()}%'
+        params.extend([search_pattern, search_pattern, search_pattern, search_pattern])
+
+    # Add sorting
+    if sort == 'za':
+        query += ' ORDER BY b.title DESC'
+    else:
+        query += ' ORDER BY b.title ASC'
+
+    # Execute the query
+    cursor.execute(query, params)
     books = cursor.fetchall()
     
     # Get all collections for the user (for navigation)
@@ -494,7 +471,9 @@ def personal_collection(collection_id):
     return render_template('personal_collection.html', 
                          collection=collection,
                          books=books,
-                         collections=collections)
+                         collections=collections,
+                         search_query=search_query,
+                         sort=sort)
 
 @app.route('/collection_view')
 def collection_view():
