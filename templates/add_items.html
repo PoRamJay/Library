@@ -73,12 +73,12 @@
             <select name="collection_id" class="form-select" required>
               <option value="">Select a collection</option>
               {% for collection in collections %}
-              <option value="{{ collection.id }}">{{ collection.name }}</option>
+              <option value="{{ collection.id }}" {% if selected_collection and selected_collection == collection.id %}selected{% endif %}>{{ collection.name }}</option>
               {% endfor %}
             </select>
 
             <h2 class="form-title" style="margin-top:32px;">Search for Books</h2>
-            <p class="form-description">Search by ISBN or keyword. ISBN search will auto-add an item.</p>
+            <p class="form-description">Search by ISBN or keyword. Use the button below to search.</p>
             <div class="search-type-select">
               <select name="search_type" class="form-select">
                 <option value="keyword">Keyword</option>
@@ -91,7 +91,23 @@
             {% if message %}
               <div class="alert alert-warning" style="margin-top: 16px;">{{ message }}</div>
             {% endif %}
-            {% if search_results %}
+          </form>
+
+          <!-- Results Section: show only if search was performed -->
+          {% if search_results is not none %}
+            <div class="search-results-header" style="display:flex;align-items:center;gap:12px;margin:32px 0 16px 0;">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px;color:#757575;"><path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div>
+                <div class="search-results-title" style="font-size:18px;font-weight:500;color:#333;">Search Results</div>
+                <div class="search-results-count" style="color:#757575;font-size:14px;">{{ search_results|length }} book{{ search_results|length != 1 and 's' or '' }} found</div>
+              </div>
+            </div>
+            {% if search_results|length == 0 %}
+              <div class="empty-state" style="margin:32px 0;text-align:center;color:#757575;font-size:18px;">
+                <svg width="48" height="48" fill="none" stroke="#bdbdbd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="margin-bottom: 12px;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <div>No books found for your search.</div>
+              </div>
+            {% else %}
               <div class="search-results">
                 {% for book in search_results %}
                   <div class="book-result">
@@ -100,45 +116,23 @@
                     <p>ISBN: {{ book.isbn }}</p>
                     <p>Year: {{ book.year_published }}</p>
                     <p>Genre: {{ book.genre }}</p>
+                    <form method="POST" action="{{ url_for('add_items') }}" style="margin-top: 8px;">
+                      <input type="hidden" name="add_book_id" value="{{ book.id }}">
+                      <input type="hidden" name="collection_id" value="{{ selected_collection or request.form.collection_id or request.args.collection_id }}">
+                      <button type="submit" class="search-button" style="background:#333;margin-top:4px;">Add to Collection</button>
+                    </form>
                   </div>
                 {% endfor %}
               </div>
             {% endif %}
-          </form>
+          {% endif %}
+
         {% else %}
           <div class="empty-state">
             <p>You must create a collection before you can add an item.</p>
             <a href="{{ url_for('add_collection') }}" class="add-collection-button">Create Collection</a>
           </div>
         {% endif %}
-
-        <!-- Results Section -->
-        <section style="margin-top:48px;">
-          <h2 class="form-description" style="margin-bottom:24px;">Results</h2>
-          {% if books %}
-          <div class="library-grid">
-            {% for book in books %}
-            <div class="book-card">
-              <div class="book-image">
-                <!-- Optionally, add a book cover or placeholder SVG here -->
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M4 19.5C4 18.837 4.26339 18.2011 4.73223 17.7322C5.20107 17.2634 5.83696 17 6.5 17H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M6.5 2H20V22H6.5C5.83696 22 5.20107 21.7366 4.73223 21.2678C4.26339 20.7989 4 20.163 4 19.5V4.5C4 3.83696 4.26339 3.20107 4.73223 2.73223C5.20107 2.26339 5.83696 2 6.5 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <div class="book-title">{{ book.title }}</div>
-              <div class="book-count">Author: {{ book.author }}</div>
-              <div class="book-count">ISBN: {{ book.isbn }}</div>
-              <!-- Add more book details as needed -->
-            </div>
-            {% endfor %}
-          </div>
-          {% else %}
-          <div class="empty-state">
-            <p>No books found.</p>
-          </div>
-          {% endif %}
-        </section>
       </div>
     </div>
   </body>
