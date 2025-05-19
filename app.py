@@ -446,11 +446,55 @@ def add_items_search():
         return redirect(url_for('login'))
     return render_template('add search.html')
 
-@app.route('/personal_collection')
-def personal_collection():
+@app.route('/personal_collection/<int:collection_id>')
+def personal_collection(collection_id):
     if not session.get('logged_in'):
         return redirect(url_for('login'))
-    return redirect(url_for('library'))  # Redirect to library for consistent layout
+    
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    
+    # Get the specific collection
+    cursor.execute('''
+        SELECT c.*, COUNT(cb.book_id) as book_count 
+        FROM collections c 
+        LEFT JOIN collection_books cb ON c.id = cb.collection_id 
+        WHERE c.id = %s AND c.user_id = (SELECT id FROM users WHERE username = %s)
+        GROUP BY c.id
+    ''', (collection_id, session['username']))
+    collection = cursor.fetchone()
+    
+    if not collection:
+        flash('Collection not found or not authorized!')
+        return redirect(url_for('library'))
+    
+    # Get books for this collection
+    cursor.execute('''
+        SELECT b.* 
+        FROM books b 
+        JOIN collection_books cb ON b.id = cb.book_id 
+        WHERE cb.collection_id = %s
+        ORDER BY b.title
+    ''', (collection_id,))
+    books = cursor.fetchall()
+    
+    # Get all collections for the user (for navigation)
+    cursor.execute('''
+        SELECT c.*, COUNT(cb.book_id) as book_count 
+        FROM collections c 
+        LEFT JOIN collection_books cb ON c.id = cb.collection_id 
+        WHERE c.user_id = (SELECT id FROM users WHERE username = %s)
+        GROUP BY c.id
+    ''', (session['username'],))
+    collections = cursor.fetchall()
+    
+    cursor.close()
+    conn.close()
+    
+    return render_template('personal_collection.html', 
+                         collection=collection,
+                         books=books,
+                         collections=collections)
 
 @app.route('/collection_view')
 def collection_view():
@@ -468,6 +512,56 @@ def support():
 def logout():
     session.clear()
     return redirect(url_for('login'))
+
+@app.route('/delete_collection/<int:collection_id>', methods=['POST'])
+def delete_collection(collection_id):
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    # Ensure the collection belongs to the current user
+    cursor.execute('SELECT id FROM users WHERE username = %s', (session['username'],))
+    user = cursor.fetchone()
+    if not user:
+        cursor.close()
+        conn.close()
+        flash('User not found!')
+        return redirect(url_for('library'))
+    user_id = user[0] if isinstance(user, tuple) else user['id']
+    cursor.execute('SELECT id FROM collections WHERE id = %s AND user_id = %s', (collection_id, user_id))
+    collection = cursor.fetchone()
+    if not collection:
+        cursor.close()
+        conn.close()
+        flash('Collection not found or not authorized!')
+        return redirect(url_for('library'))
+    # Delete books from collection_books first (to maintain referential integrity)
+    cursor.execute('DELETE FROM collection_books WHERE collection_id = %s', (collection_id,))
+    # Delete the collection itself
+    cursor.execute('DELETE FROM collections WHERE id = %s', (collection_id,))
+    conn.commit()
+    cursor.close()
+    conn.close()
+    flash('Collection deleted successfully!')
+    return redirect(url_for('library'))
+
+@app.route('/delete_books_from_collection/<int:collection_id>', methods=['POST'])
+def delete_books_from_collection(collection_id):
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+    book_ids = request.form.getlist('book_ids')
+    if book_ids:
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        format_strings = ','.join(['%s'] * len(book_ids))
+        cursor.execute(f"DELETE FROM collection_books WHERE collection_id = %s AND book_id IN ({format_strings})", [collection_id] + book_ids)
+        conn.commit()
+        cursor.close()
+        conn.close()
+        flash(f"Deleted {len(book_ids)} book(s) from the collection.")
+    else:
+        flash("No books selected for deletion.")
+    return redirect(url_for('personal_collection', collection_id=collection_id))
 
 if __name__ == '__main__':
     app.run(debug=True)
