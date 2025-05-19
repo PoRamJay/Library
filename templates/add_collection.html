@@ -56,7 +56,40 @@
       <div class="main-content">
         <header class="header">
           <h1 class="header-title">Add Collection</h1>
+          <form method="GET" action="{{ url_for('add_collection') }}" style="display:flex;gap:16px;align-items:center;margin-bottom:24px;">
+            <input type="text" name="search" placeholder="Search collections..." value="{{ request.args.get('search', '') }}" style="height:40px;width:260px;padding:0 16px;border:1px solid #ccc;border-radius:8px;font-size:16px;">
+            <select name="sort" style="height:40px;padding:0 12px;border:1px solid #ccc;border-radius:8px;font-size:16px;">
+              <option value="az" {% if request.args.get('sort', 'az') == 'az' %}selected{% endif %}>A-Z</option>
+              <option value="za" {% if request.args.get('sort') == 'za' %}selected{% endif %}>Z-A</option>
+            </select>
+            <button type="submit" style="height:40px;padding:0 24px;background:#fff;border:1px solid #ccc;border-radius:8px;font-size:16px;box-shadow:0 1px 2px rgba(0,0,0,0.04);cursor:pointer;transition:background 0.2s;">Filter</button>
+          </form>
         </header>
+
+        <!-- Results Section -->
+        <section style="margin-top:48px;">
+          <h2 class="form-description" style="margin-bottom:24px;">Results</h2>
+          {% if collections %}
+          <div class="library-grid">
+            {% for collection in collections %}
+            <div class="book-card">
+              <div class="book-image">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 19.5C4 18.837 4.26339 18.2011 4.73223 17.7322C5.20107 17.2634 5.83696 17 6.5 17H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M6.5 2H20V22H6.5C5.83696 22 5.20107 21.7366 4.73223 21.2678C4.26339 20.7989 4 20.163 4 19.5V4.5C4 3.83696 4.26339 3.20107 4.73223 2.73223C5.20107 2.26339 5.83696 2 6.5 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="book-title">{{ collection.name }}</div>
+              <div class="book-count">{{ collection.book_count }} books</div>
+            </div>
+            {% endfor %}
+          </div>
+          {% else %}
+          <div class="empty-state">
+            <p>No collections found.</p>
+          </div>
+          {% endif %}
+        </section>
 
         <form method="POST" action="{{ url_for('add_collection') }}">
           <div class="form-section">

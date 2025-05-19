@@ -56,46 +56,89 @@
       <div class="main-content">
         <header class="header">
           <h1 class="header-title">Add Item</h1>
-          <div class="search-bar">
-            <div class="search-input">
-              <input type="text" placeholder="Start Searching..." />
-              <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <button class="filter-button">
-              <svg class="filter-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 4L9 12V18L15 21V12L20 4H4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Filter
-            </button>
-          </div>
+          <form method="GET" action="{{ url_for('add_items') }}" style="display:flex;gap:16px;align-items:center;margin-bottom:24px;">
+            <input type="text" name="search" placeholder="Search collections..." value="{{ request.args.get('search', '') }}" style="height:40px;width:260px;padding:0 16px;border:1px solid #ccc;border-radius:8px;font-size:16px;">
+            <select name="sort" style="height:40px;padding:0 12px;border:1px solid #ccc;border-radius:8px;font-size:16px;">
+              <option value="az" {% if request.args.get('sort', 'az') == 'az' %}selected{% endif %}>A-Z</option>
+              <option value="za" {% if request.args.get('sort') == 'za' %}selected{% endif %}>Z-A</option>
+            </select>
+            <button type="submit" style="height:40px;padding:0 24px;background:#fff;border:1px solid #ccc;border-radius:8px;font-size:16px;box-shadow:0 1px 2px rgba(0,0,0,0.04);cursor:pointer;transition:background 0.2s;">Filter</button>
+          </form>
         </header>
 
         {% if collections %}
-        <div class="form-section">
-          <h2 class="form-title">Select Collection</h2>
-          <p class="form-description">Choose the collection you're adding items to.</p>
-          <select class="form-select">
-            <option value="">Value</option>
-            {% for collection in collections %}
-            <option value="{{ collection.id }}">{{ collection.name }}</option>
-            {% endfor %}
-          </select>
-        </div>
+          <form method="POST" action="{{ url_for('add_items') }}" class="form-section">
+            <h2 class="form-title">Select Collection</h2>
+            <p class="form-description">Choose the collection you're adding items to.</p>
+            <select name="collection_id" class="form-select" required>
+              <option value="">Select a collection</option>
+              {% for collection in collections %}
+              <option value="{{ collection.id }}">{{ collection.name }}</option>
+              {% endfor %}
+            </select>
 
-        <div class="form-section">
-          <h2 class="form-title">Search for Books</h2>
-          <p class="form-description">Search by ISBN or keyword. ISBN search will auto-add an item.</p>
-          <input type="text" class="form-input" placeholder="Value">
-          <button class="search-button">Search</button>
-        </div>
+            <h2 class="form-title" style="margin-top:32px;">Search for Books</h2>
+            <p class="form-description">Search by ISBN or keyword. ISBN search will auto-add an item.</p>
+            <div class="search-type-select">
+              <select name="search_type" class="form-select">
+                <option value="keyword">Keyword</option>
+                <option value="isbn">ISBN</option>
+              </select>
+            </div>
+            <input type="text" name="search_query" class="form-input" placeholder="Enter search term or ISBN" required>
+            <button type="submit" class="search-button">Search</button>
+
+            {% if message %}
+              <div class="alert alert-warning" style="margin-top: 16px;">{{ message }}</div>
+            {% endif %}
+            {% if search_results %}
+              <div class="search-results">
+                {% for book in search_results %}
+                  <div class="book-result">
+                    <h3>{{ book.title }}</h3>
+                    <p>Author: {{ book.author }}</p>
+                    <p>ISBN: {{ book.isbn }}</p>
+                    <p>Year: {{ book.year_published }}</p>
+                    <p>Genre: {{ book.genre }}</p>
+                  </div>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </form>
         {% else %}
-        <div class="empty-state">
-          <p>You must create a collection before you can add an item.</p>
-          <a href="{{ url_for('add_collection') }}" class="add-collection-button">Create Collection</a>
-        </div>
+          <div class="empty-state">
+            <p>You must create a collection before you can add an item.</p>
+            <a href="{{ url_for('add_collection') }}" class="add-collection-button">Create Collection</a>
+          </div>
         {% endif %}
+
+        <!-- Results Section -->
+        <section style="margin-top:48px;">
+          <h2 class="form-description" style="margin-bottom:24px;">Results</h2>
+          {% if books %}
+          <div class="library-grid">
+            {% for book in books %}
+            <div class="book-card">
+              <div class="book-image">
+                <!-- Optionally, add a book cover or placeholder SVG here -->
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 19.5C4 18.837 4.26339 18.2011 4.73223 17.7322C5.20107 17.2634 5.83696 17 6.5 17H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M6.5 2H20V22H6.5C5.83696 22 5.20107 21.7366 4.73223 21.2678C4.26339 20.7989 4 20.163 4 19.5V4.5C4 3.83696 4.26339 3.20107 4.73223 2.73223C5.20107 2.26339 5.83696 2 6.5 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="book-title">{{ book.title }}</div>
+              <div class="book-count">Author: {{ book.author }}</div>
+              <div class="book-count">ISBN: {{ book.isbn }}</div>
+              <!-- Add more book details as needed -->
+            </div>
+            {% endfor %}
+          </div>
+          {% else %}
+          <div class="empty-state">
+            <p>No books found.</p>
+          </div>
+          {% endif %}
+        </section>
       </div>
     </div>
   </body>

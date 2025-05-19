@@ -12,38 +12,16 @@
       <div class="div">
         <div class="content">
           <div class="input-and-button">
-            <input class="field" name="username" placeholder="username" type="text" required />
-            <input class="field" name="password" placeholder="password" type="password" required />
-            <button class="button" type="submit"><div class="text-wrapper">Log In</div></button>
+            <input class="field" placeholder="username" type="text" />
+            <div class="label-wrapper"><div class="label">password</div></div>
+            <button class="button"><div class="text-wrapper">Sign In</div></button>
           </div>
-          <div class="signup-link">
-            Don't have account yet? <a href="{{ url_for('signup') }}">Sign Up</a>
-          </div>
-          <div class="checkbox-group">
-            <div class="checkbox-row">
-              <input type="checkbox" id="user" name="role" value="user" checked />
-              <label for="user">User</label>
-            </div>
-            <div class="checkbox-row">
-              <input type="checkbox" id="admin" name="role" value="admin" />
-              <label for="admin">Admin</label>
-            </div>
-          </div>
+          <img class="check-box" src="img/check-box.svg" />
+          <div class="text-wrapper-2">Keep Logged In</div>
         </div>
         <div class="text-wrapper-4">Shelf Sync</div>
         <div class="copy"><div class="text-wrapper-5">Login as Admin User</div></div>
       </div>
     </div>
-    <script>
-      document.querySelectorAll('.checkbox-group input[type="checkbox"]').forEach(function(checkbox) {
-        checkbox.addEventListener('change', function() {
-          if (this.checked) {
-            document.querySelectorAll('.checkbox-group input[type="checkbox"]').forEach(function(box) {
-              if (box !== checkbox) box.checked = false;
-            });
-          }
-        });
-      });
-    </script>
   </body>
 </html>
