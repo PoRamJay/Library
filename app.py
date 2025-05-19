@@ -210,5 +210,38 @@ def logout():
     session.clear()
     return redirect(url_for('login'))
 
+# --- DELETE COLLECTION ROUTE ADDED BELOW ---
+@app.route('/delete_collection/<int:collection_id>', methods=['POST'])
+def delete_collection(collection_id):
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    # Ensure the collection belongs to the current user
+    cursor.execute('SELECT id FROM users WHERE username = %s', (session['username'],))
+    user = cursor.fetchone()
+    if not user:
+        cursor.close()
+        conn.close()
+        flash('User not found!')
+        return redirect(url_for('library'))
+    user_id = user[0]
+    cursor.execute('SELECT id FROM collections WHERE id = %s AND user_id = %s', (collection_id, user_id))
+    collection = cursor.fetchone()
+    if not collection:
+        cursor.close()
+        conn.close()
+        flash('Collection not found or not authorized!')
+        return redirect(url_for('library'))
+    # Delete books from collection_books first (to maintain referential integrity)
+    cursor.execute('DELETE FROM collection_books WHERE collection_id = %s', (collection_id,))
+    # Delete the collection itself
+    cursor.execute('DELETE FROM collections WHERE id = %s', (collection_id,))
+    conn.commit()
+    cursor.close()
+    conn.close()
+    flash('Collection deleted successfully!')
+    return redirect(url_for('library'))
+
 if __name__ == '__main__':
     app.run(debug=True)
