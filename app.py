@@ -27,26 +27,19 @@ def signup():
         username = request.form['username']
         password = request.form['password']
         confirm_password = request.form['confirm_password']
-        user_type = request.form.get('user_type', 'user')
         if password != confirm_password:
             flash('Passwords do not match!')
             return render_template('signup.html')
         conn = get_db_connection()
         cursor = conn.cursor()
-        if user_type == 'admin':
-            cursor.execute('SELECT id FROM admins WHERE username = %s', (username,))
-        else:
-            cursor.execute('SELECT id FROM users WHERE username = %s', (username,))
+        cursor.execute('SELECT id FROM users WHERE username = %s', (username,))
         if cursor.fetchone():
             flash('Username already exists!')
             cursor.close()
             conn.close()
             return render_template('signup.html')
         password_hash = generate_password_hash(password)
-        if user_type == 'admin':
-            cursor.execute('INSERT INTO admins (username, password_hash) VALUES (%s, %s)', (username, password_hash))
-        else:
-            cursor.execute('INSERT INTO users (username, password_hash) VALUES (%s, %s)', (username, password_hash))
+        cursor.execute('INSERT INTO users (username, password_hash) VALUES (%s, %s)', (username, password_hash))
         conn.commit()
         cursor.close()
         conn.close()
