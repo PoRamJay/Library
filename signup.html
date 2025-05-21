@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shelf Sync - Sign Up</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        height: 100vh;
+        background-color: #f5f5f5;
+      }
+      .container {
+        display: flex;
+        width: 100%;
+      }
+      .left-side {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      .right-side {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 40px;
+        background-color: white;
+      }
+      .logo {
+        font-size: 2em;
+        margin-bottom: 20px;
+      }
+      .form-container {
+        max-width: 400px;
+        width: 100%;
+      }
+      h1 {
+        margin-bottom: 10px;
+      }
+      .subtitle {
+        color: #666;
+        margin-bottom: 30px;
+      }
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      .signup-btn {
+        width: 100%;
+        padding: 12px;
+        background-color: #000;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 20px 0;
+      }
+      .login-link {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .login-link a {
+        color: #000;
+        text-decoration: none;
+      }
+      .terms {
+        text-align: center;
+        font-size: 0.9em;
+        color: #666;
+      }
+      .terms a {
+        color: #000;
+        text-decoration: none;
+      }
+      .messages {
+        color: red;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-side">
+        <div class="logo">Shelf Sync</div>
+      </div>
+      <div class="right-side">
+        <div class="form-container">
+          <h1>Create an account</h1>
+          <div class="subtitle">Enter your username and password to sign up for this app</div>
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              <div class="messages">
+                {% for message in messages %}
+                  {{ message }}
+                {% endfor %}
+              </div>
+            {% endif %}
+          {% endwith %}
+          <form method="POST" action="{{ url_for('signup') }}">
+            <input type="text" name="username" placeholder="username" required>
+            <input type="password" name="password" placeholder="password" required>
+            <input type="password" name="confirm_password" placeholder="re-enter password" required>
+            <button type="submit" class="signup-btn">Sign Up</button>
+            <div class="login-link">
+              Already have an account? <a href="{{ url_for('login') }}">Log In</a>
+            </div>
+            <div class="terms">
+              By clicking continue, you agree to our 
+              <a href="#">Terms of Service</a> and 
+              <a href="#">Privacy Policy</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
